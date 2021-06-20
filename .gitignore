@@ -1,0 +1,8 @@
+/main
+*.lx2
+*.vcd
+/gb-fpga.*
+!/gb-fpga.srcs
+*.mem
+*.coe
+.DS_Store
