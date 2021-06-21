@@ -86,12 +86,16 @@ module top
 
     reg[11:0] rst_delay = 12'h000;
     always @(posedge clk) begin
-        if (rst_delay == 12'hf00)
-            rst <= 1;
-        if (rst_delay == 12'hfff)
-            rst <= 0;
-        if (rst_delay < 12'hfff)
-            rst_delay <= rst_delay + 1;
+        if (btn[0])
+            rst <= btn[0];
+        else begin
+            if (rst_delay == 12'hf00)
+                rst <= 1;
+            if (rst_delay == 12'hfff)
+                rst <= 0;
+            if (rst_delay < 12'hfff)
+                rst_delay <= rst_delay + 1;
+        end
     end
 
     display d1 (.clk(clk_buf60), .pclk(pclk), .hsync(hsync), .vsync(vsync), .de(de), .color());
