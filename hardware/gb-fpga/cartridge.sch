@@ -14,17 +14,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L gb-fpga:Cartridge-32bit J2
-U 1 1 60D540F7
-P 5700 4000
-F 0 "J2" H 5968 4111 50  0000 L CNN
-F 1 "Cartridge-32bit" H 5968 4020 50  0000 L CNN
-F 2 "gb-fpga:Cartridge-DMG" H 5700 4550 50  0001 C CNN
-F 3 "" H 5700 4550 50  0001 C CNN
-	1    5700 4000
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GND #PWR0105
 U 1 1 60D575F5
 P 5500 5550
@@ -39,4 +28,15 @@ Wire Wire Line
 	5650 5500 5500 5500
 Wire Wire Line
 	5500 5500 5500 5550
+$Comp
+L gb-fpga:Cartridge-32pin J2
+U 1 1 60D43C17
+P 5700 4000
+F 0 "J2" H 5968 4111 50  0000 L CNN
+F 1 "Cartridge-32pin" H 5968 4020 50  0000 L CNN
+F 2 "gb-fpga:Cartridge-DMG" H 5700 4550 50  0001 C CNN
+F 3 "" H 5700 4550 50  0001 C CNN
+	1    5700 4000
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

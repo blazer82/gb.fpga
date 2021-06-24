@@ -1,11 +1,11 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# Cartridge-32bit
+# Cartridge-32pin
 #
-DEF Cartridge-32bit J 0 40 Y Y 1 F N
+DEF Cartridge-32pin J 0 40 Y Y 1 F N
 F0 "J" 0 1750 50 H V C CNN
-F1 "Cartridge-32bit" 0 -1600 50 H V C CNN
+F1 "Cartridge-32pin" 0 -1600 50 H V C CNN
 F2 "gb-fpga:Cartridge-DMG" 0 550 50 H I C CNN
 F3 "" 0 550 50 H I C CNN
 DRAW
