@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 6
+Sheet 4 6
 Title "USB"
 Date ""
 Rev ""
@@ -22,28 +22,6 @@ F 1 "FT2232HQ" H 5850 6090 50  0000 C CNN
 F 2 "Package_DFN_QFN:QFN-64-1EP_9x9mm_P0.5mm_EP4.35x4.35mm" H 5850 3800 50  0001 C CNN
 F 3 "https://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT2232H.pdf" H 5850 3800 50  0001 C CNN
 	1    5850 3800
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:USB_B_Micro J1
-U 1 1 60D33076
-P 3000 3700
-F 0 "J1" H 3057 4167 50  0000 C CNN
-F 1 "USB_B_Micro" H 3057 4076 50  0000 C CNN
-F 2 "Connector_USB:USB_Micro-B_Amphenol_10103594-0001LF_Horizontal" H 3150 3650 50  0001 C CNN
-F 3 "~" H 3150 3650 50  0001 C CNN
-	1    3000 3700
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR0103
-U 1 1 60D34652
-P 3000 4100
-F 0 "#PWR0103" H 3000 3850 50  0001 C CNN
-F 1 "GND" H 3005 3927 50  0000 C CNN
-F 2 "" H 3000 4100 50  0001 C CNN
-F 3 "" H 3000 4100 50  0001 C CNN
-	1    3000 4100
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -99,4 +77,15 @@ F 3 "" H 6250 6150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 6250 6150
+$Comp
+L Connector:USB_C_Receptacle_USB2.0 J1
+U 1 1 60E1E155
+P 1650 4100
+F 0 "J1" H 1757 4967 50  0000 C CNN
+F 1 "USB_C_Receptacle_USB2.0" H 1757 4876 50  0000 C CNN
+F 2 "Connector_USB:USB_C_Receptacle_XKB_U262-16XN-4BVC11" H 1800 4100 50  0001 C CNN
+F 3 "https://www.usb.org/sites/default/files/documents/usb_type-c.zip" H 1800 4100 50  0001 C CNN
+	1    1650 4100
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
