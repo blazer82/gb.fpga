@@ -212,30 +212,6 @@ Wire Wire Line
 Wire Wire Line
 	5400 4300 5700 4300
 Wire Wire Line
-	5700 4300 5700 3200
-$Comp
-L Device:R_Small R4
-U 1 1 60DA54B4
-P 5700 3100
-F 0 "R4" H 5550 3050 50  0000 C CNN
-F 1 "1k" H 5550 3150 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 5700 3100 50  0001 C CNN
-F 3 "~" H 5700 3100 50  0001 C CNN
-	1    5700 3100
-	-1   0    0    1   
-$EndComp
-$Comp
-L power:+3V3 #PWR0111
-U 1 1 60DA5CD7
-P 5700 3000
-F 0 "#PWR0111" H 5700 2850 50  0001 C CNN
-F 1 "+3V3" H 5715 3173 50  0000 C CNN
-F 2 "" H 5700 3000 50  0001 C CNN
-F 3 "" H 5700 3000 50  0001 C CNN
-	1    5700 3000
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
 	3000 3400 2300 3400
 $Comp
 L Device:R_Small R7
@@ -457,4 +433,44 @@ F 3 "" H 2150 5100 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	2150 5100 2150 4900
+$Comp
+L power:+3V3 #PWR0111
+U 1 1 60DA5CD7
+P 5700 3000
+F 0 "#PWR0111" H 5700 2850 50  0001 C CNN
+F 1 "+3V3" H 5715 3173 50  0000 C CNN
+F 2 "" H 5700 3000 50  0001 C CNN
+F 3 "" H 5700 3000 50  0001 C CNN
+	1    5700 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5700 4300 5700 3200
+$Comp
+L Device:R_Small R4
+U 1 1 60DA54B4
+P 5700 3100
+F 0 "R4" H 5550 3050 50  0000 C CNN
+F 1 "1k" H 5550 3150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 5700 3100 50  0001 C CNN
+F 3 "~" H 5700 3100 50  0001 C CNN
+	1    5700 3100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5400 3300 5850 3300
+Wire Wire Line
+	5400 3400 5850 3400
+Wire Wire Line
+	5400 3500 5850 3500
+Wire Wire Line
+	5400 3600 5850 3600
+Text GLabel 5850 3300 2    50   Input ~ 0
+TCK
+Text GLabel 5850 3400 2    50   Input ~ 0
+TDI
+Text GLabel 5850 3500 2    50   Output ~ 0
+TDO
+Text GLabel 5850 3600 2    50   Input ~ 0
+TMS
 $EndSCHEMATC
