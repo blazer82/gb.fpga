@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 6
+Sheet 5 7
 Title ""
 Date ""
 Rev ""
@@ -40,10 +40,10 @@ F 3 "" H 5850 2250 60  0001 L CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L power:+5V #PWR0137
 U 1 1 60EE2CF5
 P 5500 2400
-F 0 "#PWR?" H 5500 2250 50  0001 C CNN
+F 0 "#PWR0137" H 5500 2250 50  0001 C CNN
 F 1 "+5V" H 5515 2573 50  0000 C CNN
 F 2 "" H 5500 2400 50  0001 C CNN
 F 3 "" H 5500 2400 50  0001 C CNN

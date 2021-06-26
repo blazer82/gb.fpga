@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 6
+Sheet 1 7
 Title "GB FPGA"
 Date ""
 Rev ""
@@ -38,8 +38,14 @@ F0 "Cartridge" 50
 F1 "cartridge.sch" 50
 $EndSheet
 $Sheet
-S 1750 1700 500  150 
+S 1750 4450 500  150 
 U 60D22871
+F0 "Power (FPGA)" 50
+F1 "power-fpga.sch" 50
+$EndSheet
+$Sheet
+S 1750 5000 500  150 
+U 60D77322
 F0 "Power" 50
 F1 "power.sch" 50
 $EndSheet

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 4 6
+Sheet 4 7
 Title "USB"
 Date ""
 Rev ""
@@ -455,4 +455,8 @@ Wire Wire Line
 Connection ~ 4250 5000
 Wire Wire Line
 	4250 5000 4650 5000
+Wire Wire Line
+	2500 2300 2300 2300
+Text GLabel 2500 2300 2    50   Output ~ 0
+USB_5V
 $EndSCHEMATC
