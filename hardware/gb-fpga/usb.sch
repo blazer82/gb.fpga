@@ -363,4 +363,96 @@ Text GLabel 8050 3700 2    50   Output ~ 0
 TX
 Text GLabel 8050 3800 2    50   Input ~ 0
 RX
+$Comp
+L Oscillator:SG-8002JA X1
+U 1 1 60ECBD8E
+P 3300 5000
+F 0 "X1" H 3644 5046 50  0000 L CNN
+F 1 "SG-8002JA" H 3644 4955 50  0000 L CNN
+F 2 "Oscillator:Oscillator_SMD_Abracon_ASE-4Pin_3.2x2.5mm" H 4000 4650 50  0001 C CNN
+F 3 "https://support.epson.biz/td/api/doc_check.php?mode=dl&lang=en&Parts=SG-8002DC" H 3200 5000 50  0001 C CNN
+	1    3300 5000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 5000 4250 5000
+$Comp
+L Device:C_Small C2
+U 1 1 60ECE62B
+P 2950 5450
+F 0 "C2" V 3050 5500 50  0000 L CNN
+F 1 "10nF" V 3050 5250 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2950 5450 50  0001 C CNN
+F 3 "~" H 2950 5450 50  0001 C CNN
+	1    2950 5450
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3050 5450 3300 5450
+Wire Wire Line
+	3300 5450 3300 5300
+$Comp
+L power:GND #PWR0133
+U 1 1 60ED319C
+P 3300 5550
+F 0 "#PWR0133" H 3300 5300 50  0001 C CNN
+F 1 "GND" H 3305 5377 50  0000 C CNN
+F 2 "" H 3300 5550 50  0001 C CNN
+F 3 "" H 3300 5550 50  0001 C CNN
+	1    3300 5550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3300 5550 3300 5450
+Connection ~ 3300 5450
+Wire Wire Line
+	3300 4600 3300 4700
+$Comp
+L power:+3V3 #PWR0134
+U 1 1 60ED4C57
+P 3300 4600
+F 0 "#PWR0134" H 3300 4450 50  0001 C CNN
+F 1 "+3V3" H 3315 4773 50  0000 C CNN
+F 2 "" H 3300 4600 50  0001 C CNN
+F 3 "" H 3300 4600 50  0001 C CNN
+	1    3300 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0135
+U 1 1 60ED7EA6
+P 2900 4950
+F 0 "#PWR0135" H 2900 4800 50  0001 C CNN
+F 1 "+3V3" H 2915 5123 50  0000 C CNN
+F 2 "" H 2900 4950 50  0001 C CNN
+F 3 "" H 2900 4950 50  0001 C CNN
+	1    2900 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0136
+U 1 1 60ED878B
+P 2700 5400
+F 0 "#PWR0136" H 2700 5250 50  0001 C CNN
+F 1 "+3V3" H 2715 5573 50  0000 C CNN
+F 2 "" H 2700 5400 50  0001 C CNN
+F 3 "" H 2700 5400 50  0001 C CNN
+	1    2700 5400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2700 5400 2700 5450
+Wire Wire Line
+	2700 5450 2850 5450
+Wire Wire Line
+	2900 4950 2900 5000
+Wire Wire Line
+	2900 5000 3000 5000
+Text GLabel 4250 4900 1    50   Input ~ 0
+12MHZ
+Wire Wire Line
+	4250 4900 4250 5000
+Connection ~ 4250 5000
+Wire Wire Line
+	4250 5000 4650 5000
 $EndSCHEMATC
