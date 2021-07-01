@@ -521,10 +521,10 @@ F 3 "" H 7700 4500 50  0001 C CNN
 	1    7700 4500
 	1    0    0    -1  
 $EndComp
-Text GLabel 7550 2800 2    50   Output ~ 0
+Text GLabel 7700 2900 2    50   Output ~ 0
 VOUT
 Wire Wire Line
-	7550 2800 7350 2800
+	7700 2900 7600 2900
 Text GLabel 1450 3600 0    50   Input ~ 0
 VOUT
 Wire Wire Line
@@ -635,19 +635,8 @@ F 3 "" H 1600 3800 50  0001 C CNN
 	1    1600 3800
 	1    0    0    -1  
 $EndComp
-$Comp
-L Switch:SW_SPST SW1
-U 1 1 60E48A72
-P 7150 2800
-F 0 "SW1" H 7150 3035 50  0000 C CNN
-F 1 "SW_SPST" H 7150 2944 50  0000 C CNN
-F 2 "" H 7150 2800 50  0001 C CNN
-F 3 "~" H 7150 2800 50  0001 C CNN
-	1    7150 2800
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
-	6950 2800 6500 2800
+	7100 2800 6500 2800
 Wire Wire Line
 	1600 3600 3800 3600
 $Comp
@@ -1014,4 +1003,26 @@ Wire Wire Line
 Wire Wire Line
 	9150 3400 9200 3400
 Connection ~ 9150 3200
+$Comp
+L gb-fpga:Switch SW1
+U 1 1 60DEB027
+P 7350 2800
+F 0 "SW1" H 7350 3125 50  0000 C CNN
+F 1 "Switch" H 7350 3034 50  0000 C CNN
+F 2 "gb-fpga:EG2215" H 7350 2800 50  0001 C CNN
+F 3 "" H 7350 2800 50  0001 C CNN
+	1    7350 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0185
+U 1 1 60E05727
+P 7100 2900
+F 0 "#PWR0185" H 7100 2650 50  0001 C CNN
+F 1 "GND" H 7105 2727 50  0000 C CNN
+F 2 "" H 7100 2900 50  0001 C CNN
+F 3 "" H 7100 2900 50  0001 C CNN
+	1    7100 2900
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
