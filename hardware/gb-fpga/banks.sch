@@ -87,15 +87,15 @@ Text GLabel 6900 2450 0    50   BiDi ~ 0
 GB_D0
 Text GLabel 6900 3050 0    50   BiDi ~ 0
 GB_D1
-Text GLabel 6900 1950 0    50   BiDi ~ 0
-GB_D2
-Text GLabel 6900 2050 0    50   BiDi ~ 0
-GB_D3
 Text GLabel 6900 2550 0    50   BiDi ~ 0
+GB_D2
+Text GLabel 6900 1950 0    50   BiDi ~ 0
+GB_D3
+Text GLabel 6900 2050 0    50   BiDi ~ 0
 GB_D4
-Text GLabel 6900 1750 0    50   BiDi ~ 0
-GB_D5
 Text GLabel 6900 2150 0    50   BiDi ~ 0
+GB_D5
+Text GLabel 6900 1750 0    50   BiDi ~ 0
 GB_D6
 Text GLabel 6900 1850 0    50   BiDi ~ 0
 GB_D7
@@ -165,4 +165,8 @@ Text GLabel 3300 5700 0    50   Input ~ 0
 JOY_DOWN
 Text GLabel 3300 6300 0    50   Input ~ 0
 JOY_LEFT
+Text GLabel 6900 1650 0    50   Output ~ 0
+AUD_L
+Text GLabel 6900 4950 0    50   Output ~ 0
+AUD_R
 $EndSCHEMATC
