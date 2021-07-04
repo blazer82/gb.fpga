@@ -99,4 +99,70 @@ Text GLabel 6900 2150 0    50   BiDi ~ 0
 GB_D6
 Text GLabel 6900 1850 0    50   BiDi ~ 0
 GB_D7
+Text GLabel 3300 2200 0    50   Input ~ 0
+DISP_SDO
+Text GLabel 3300 2300 0    50   Output ~ 0
+DISP_SDI
+Text GLabel 3300 1900 0    50   Output ~ 0
+DISP_SCLK
+Text GLabel 3300 2600 0    50   Output ~ 0
+DISP_CS
+Text GLabel 3300 1800 0    50   Output ~ 0
+DISP_RST
+Text GLabel 3300 2100 0    50   Output ~ 0
+DISP_B0
+Text GLabel 3300 2000 0    50   Output ~ 0
+DISP_B1
+Text GLabel 3300 1600 0    50   Output ~ 0
+DISP_B2
+Text GLabel 3300 2500 0    50   Output ~ 0
+DISP_B3
+Text GLabel 3300 2400 0    50   Output ~ 0
+DISP_B4
+Text GLabel 3300 1700 0    50   Output ~ 0
+DISP_G0
+Text GLabel 3300 3600 0    50   Output ~ 0
+DISP_G1
+Text GLabel 3300 3400 0    50   Output ~ 0
+DISP_G2
+Text GLabel 3300 3700 0    50   Output ~ 0
+DISP_G3
+Text GLabel 3300 3500 0    50   Output ~ 0
+DISP_G4
+Text GLabel 3300 3000 0    50   Output ~ 0
+DISP_G5
+Text GLabel 3300 3100 0    50   Output ~ 0
+DISP_R0
+Text GLabel 3300 4200 0    50   Output ~ 0
+DISP_R1
+Text GLabel 3300 4300 0    50   Output ~ 0
+DISP_R2
+Text GLabel 3300 4400 0    50   Output ~ 0
+DISP_R3
+Text GLabel 3300 4500 0    50   Output ~ 0
+DISP_R4
+Text GLabel 3300 5900 0    50   Output ~ 0
+DISP_DE
+Text GLabel 3300 5000 0    50   Output ~ 0
+DISP_PCLK
+Text GLabel 3300 5800 0    50   Output ~ 0
+DISP_HS
+Text GLabel 3300 5100 0    50   Output ~ 0
+DISP_VS
+Text GLabel 3300 5200 0    50   Input ~ 0
+JOY_B
+Text GLabel 3300 5400 0    50   Input ~ 0
+JOY_A
+Text GLabel 3300 5300 0    50   Input ~ 0
+JOY_START
+Text GLabel 3300 5500 0    50   Input ~ 0
+JOY_SELECT
+Text GLabel 3300 5600 0    50   Input ~ 0
+JOY_RIGHT
+Text GLabel 3300 6200 0    50   Input ~ 0
+JOY_UP
+Text GLabel 3300 5700 0    50   Input ~ 0
+JOY_DOWN
+Text GLabel 3300 6300 0    50   Input ~ 0
+JOY_LEFT
 $EndSCHEMATC

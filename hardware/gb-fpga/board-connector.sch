@@ -54,7 +54,7 @@ Text GLabel 5300 3100 0    50   Input ~ 0
 DISP_CS
 Text GLabel 5300 2900 0    50   Input ~ 0
 DISP_SDI
-Text GLabel 5300 2800 0    50   Input ~ 0
+Text GLabel 5300 2800 0    50   Output ~ 0
 DISP_SDO
 $Comp
 L power:GND #PWR0189
