@@ -35,16 +35,68 @@ F 3 "" H 3500 1250 60  0001 L CNN
 	3    3300 1400
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3300 3200 3150 3200
-Wire Wire Line
-	3300 3300 3150 3300
-Text GLabel 3150 3200 0    50   Output ~ 0
+Text GLabel 3300 3200 0    50   Output ~ 0
 RX
-Text GLabel 3150 3300 0    50   Input ~ 0
+Text GLabel 3300 3300 0    50   Input ~ 0
 TX
-Wire Wire Line
-	3300 4000 3150 4000
-Text GLabel 3150 4000 0    50   Input ~ 0
+Text GLabel 3300 4000 0    50   Input ~ 0
 12MHZ
+Text GLabel 6900 5750 0    50   Output ~ 0
+GB_CLK
+Text GLabel 6900 5550 0    50   Output ~ 0
+GB_WR
+Text GLabel 6900 5650 0    50   Output ~ 0
+GB_RD
+Text GLabel 6900 5450 0    50   Output ~ 0
+GB_CS
+Text GLabel 6900 5350 0    50   Output ~ 0
+GB_A0
+Text GLabel 6900 4850 0    50   Output ~ 0
+GB_A1
+Text GLabel 6900 5250 0    50   Output ~ 0
+GB_A2
+Text GLabel 6900 5150 0    50   Output ~ 0
+GB_A3
+Text GLabel 6900 3950 0    50   Output ~ 0
+GB_A4
+Text GLabel 6900 5050 0    50   Output ~ 0
+GB_A5
+Text GLabel 6900 4050 0    50   Output ~ 0
+GB_A6
+Text GLabel 6900 3850 0    50   Output ~ 0
+GB_A7
+Text GLabel 6900 4550 0    50   Output ~ 0
+GB_A8
+Text GLabel 6900 4450 0    50   Output ~ 0
+GB_A9
+Text GLabel 6900 3750 0    50   Output ~ 0
+GB_A10
+Text GLabel 6900 3650 0    50   Output ~ 0
+GB_A11
+Text GLabel 6900 2750 0    50   Output ~ 0
+GB_A12
+Text GLabel 6900 2650 0    50   Output ~ 0
+GB_A13
+Text GLabel 6900 2950 0    50   Output ~ 0
+GB_A14
+Text GLabel 6900 2850 0    50   Output ~ 0
+GB_A15
+Text GLabel 6900 3150 0    50   Output ~ 0
+GB_RST
+Text GLabel 6900 2450 0    50   BiDi ~ 0
+GB_D0
+Text GLabel 6900 3050 0    50   BiDi ~ 0
+GB_D1
+Text GLabel 6900 1950 0    50   BiDi ~ 0
+GB_D2
+Text GLabel 6900 2050 0    50   BiDi ~ 0
+GB_D3
+Text GLabel 6900 2550 0    50   BiDi ~ 0
+GB_D4
+Text GLabel 6900 1750 0    50   BiDi ~ 0
+GB_D5
+Text GLabel 6900 2150 0    50   BiDi ~ 0
+GB_D6
+Text GLabel 6900 1850 0    50   BiDi ~ 0
+GB_D7
 $EndSCHEMATC
