@@ -590,7 +590,7 @@
   (module gb-fpga:EG2215 locked (layer F.Cu) (tedit 60DDC717) (tstamp 60DE180B)
     (at 71.1 -73.9)
     (path /60D77322/60DEB027)
-    (fp_text reference SW1 (at 0.03 4.44) (layer F.SilkS)
+    (fp_text reference SW1 (at 0.03 4.44) (layer F.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value Switch (at 0 -4.37) (layer F.Fab)
@@ -661,7 +661,7 @@
   (module gb-fpga:Cartridge-DMG locked (layer F.Cu) (tedit 60D42225) (tstamp 60D3F1DB)
     (at 40.025 -6.5)
     (path /60D49E96/60DDB13C)
-    (fp_text reference J2 (at 0.12 -20.94) (layer F.SilkS)
+    (fp_text reference J2 (at 0.12 -20.94) (layer F.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value Cartridge-32pin (at 0.04 1.97) (layer F.Fab)
@@ -1433,7 +1433,7 @@
     (tags "USB C Type-C Receptacle SMD")
     (path /60D2FD9B/60E1E155)
     (attr smd)
-    (fp_text reference J1 (at -6.05 0.95 180) (layer F.SilkS)
+    (fp_text reference J1 (at -6.05 0.95 180) (layer F.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value USB_C_Receptacle_USB2.0 (at 0 4.935 90) (layer F.Fab)
@@ -4106,7 +4106,7 @@
     (tags "connector Hirose FH12 horizontal")
     (path /60DDCCEF/60DDE126)
     (attr smd)
-    (fp_text reference J5 (at 0 3.7) (layer B.SilkS)
+    (fp_text reference J5 (at 0 3.7) (layer B.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
     (fp_text value Conn_02x25_Counter_Clockwise (at 0 -5.6) (layer B.Fab)
