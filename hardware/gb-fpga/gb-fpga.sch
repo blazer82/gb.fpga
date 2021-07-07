@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 8
+Sheet 1 9
 Title "GB FPGA"
 Date ""
 Rev ""
@@ -54,5 +54,11 @@ S 1750 5550 500  150
 U 60DDCCEF
 F0 "Board Connector" 50
 F1 "board-connector.sch" 50
+$EndSheet
+$Sheet
+S 1750 6100 500  150 
+U 60E56A33
+F0 "Test Points" 50
+F1 "testpoints.sch" 50
 $EndSheet
 $EndSCHEMATC

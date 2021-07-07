@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 8
+Sheet 2 9
 Title "Configuration"
 Date ""
 Rev ""
@@ -177,7 +177,7 @@ Connection ~ 7550 4200
 Wire Wire Line
 	7550 4200 7550 3550
 Wire Wire Line
-	8550 4100 6450 4100
+	8550 4100 8100 4100
 Wire Wire Line
 	6450 4100 6450 3700
 Wire Wire Line
@@ -473,4 +473,11 @@ Text GLabel 5850 3500 2    50   Output ~ 0
 TDO
 Text GLabel 5850 3600 2    50   Input ~ 0
 TMS
+Text GLabel 8100 3900 1    50   UnSpc ~ 0
+SCLK
+Wire Wire Line
+	8100 3900 8100 4100
+Connection ~ 8100 4100
+Wire Wire Line
+	8100 4100 6450 4100
 $EndSCHEMATC
