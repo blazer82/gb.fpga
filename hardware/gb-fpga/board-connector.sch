@@ -21,6 +21,7 @@ F 0 "J5" H 5650 5117 50  0000 C CNN
 F 1 "Conn_02x25_Counter_Clockwise" H 5650 5026 50  0001 C CNN
 F 2 "Connector_FFC-FPC:Hirose_FH12-50S-0.5SH_1x50-1MP_P0.50mm_Horizontal" H 5600 3700 50  0001 C CNN
 F 3 "~" H 5600 3700 50  0001 C CNN
+F 4 "FH12-50S-0.5SH(55)" H 5600 3700 50  0001 C CNN "Manufacturer Part Number"
 	1    5600 3700
 	1    0    0    -1  
 $EndComp
@@ -305,6 +306,7 @@ F 0 "R35" V 7804 3150 50  0000 C CNN
 F 1 "1k" V 7895 3150 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 8000 3150 50  0001 C CNN
 F 3 "~" H 8000 3150 50  0001 C CNN
+F 4 "RC0402JR-071KL" H 8000 3150 50  0001 C CNN "Manufacturer Part Number"
 	1    8000 3150
 	0    1    1    0   
 $EndComp
@@ -316,6 +318,7 @@ F 0 "R36" V 7804 3650 50  0000 C CNN
 F 1 "1k" V 7895 3650 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 8000 3650 50  0001 C CNN
 F 3 "~" H 8000 3650 50  0001 C CNN
+F 4 "RC0402JR-071KL" H 8000 3650 50  0001 C CNN "Manufacturer Part Number"
 	1    8000 3650
 	0    1    1    0   
 $EndComp
@@ -327,6 +330,7 @@ F 0 "C48" H 7742 3296 50  0000 L CNN
 F 1 "4.7nF" H 7742 3205 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0402_1005Metric" H 7650 3250 50  0001 C CNN
 F 3 "~" H 7650 3250 50  0001 C CNN
+F 4 "CL05B472KA5NNNC" H 7650 3250 50  0001 C CNN "Manufacturer Part Number"
 	1    7650 3250
 	1    0    0    -1  
 $EndComp
@@ -338,6 +342,7 @@ F 0 "C49" H 7742 3796 50  0000 L CNN
 F 1 "4.7nF" H 7742 3705 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0402_1005Metric" H 7650 3750 50  0001 C CNN
 F 3 "~" H 7650 3750 50  0001 C CNN
+F 4 "CL05B472KA5NNNC" H 7650 3750 50  0001 C CNN "Manufacturer Part Number"
 	1    7650 3750
 	1    0    0    -1  
 $EndComp
