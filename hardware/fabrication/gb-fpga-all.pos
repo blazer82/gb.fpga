@@ -1,36 +1,36 @@
-### Module positions - created on Wednesday, July 07, 2021 at 04:37:01 PM ###
+### Module positions - created on Thursday, July 08, 2021 at 04:42:19 PM ###
 ### Printed by Pcbnew version kicad (5.1.10-1-10_14)
 ## Unit = mm, Angle = deg.
 ## Side : All
 # Ref     Val                           Package                                                 PosX       PosY       Rot  Side
-C14       47µF                         C_0201_0603Metric                                    52.0750    48.8500  270.0000  bottom
+C14       47µF                         C_0603_1608Metric                                    39.4400    42.3700  180.0000  bottom
 C15       4.7µF                        C_0201_0603Metric                                    46.0750    48.8500   90.0000  bottom
 C16       470nF                         C_0201_0603Metric                                    49.0750    47.8250   90.0000  bottom
 C17       470nF                         C_0201_0603Metric                                    56.0750    48.8500  270.0000  bottom
-C18       47µF                         C_0201_0603Metric                                    47.0750    52.8500   90.0000  bottom
+C18       47µF                         C_0603_1608Metric                                    31.9100    64.1800  180.0000  bottom
 C19       4.7µF                        C_0201_0603Metric                                    49.0750    52.8500   90.0000  bottom
 C20       470nF                         C_0201_0603Metric                                    51.0750    52.8450  270.0000  bottom
-C21       100µF                        C_0201_0603Metric                                    48.0750    48.8500   90.0000  bottom
+C21       100µF                        C_1206_3216Metric                                    63.8700    58.5800  270.0000  bottom
 C22       4.7µF                        C_0201_0603Metric                                    48.0750    52.8500  270.0000  bottom
 C23       4.7µF                        C_0201_0603Metric                                    51.0750    48.8500   90.0000  bottom
 C24       470nF                         C_0201_0603Metric                                    52.0750    52.8500   90.0000  bottom
 C25       470nF                         C_0201_0603Metric                                    47.0750    48.8500  270.0000  bottom
 C26       470nF                         C_0201_0603Metric                                    53.0750    48.8550   90.0000  bottom
-C27       100µF                        C_0201_0603Metric                                    38.5000    59.6000  180.0000  bottom
+C27       100µF                        C_1206_3216Metric                                    38.6150    44.6100  180.0000  bottom
 C28       4.7µF                        C_0201_0603Metric                                    59.6500    52.3200    0.0000  bottom
 C29       4.7µF                        C_0201_0603Metric                                    57.7600    40.8900  270.0000  bottom
 C30       470nF                         C_0201_0603Metric                                    44.0750    43.8500  270.0000  bottom
 C31       470nF                         C_0201_0603Metric                                    45.0750    50.8500  270.0000  bottom
 C32       470nF                         C_0201_0603Metric                                    44.0750    48.8500  270.0000  bottom
 C33       470nF                         C_0201_0603Metric                                    51.0750    44.8500   90.0000  bottom
-C34       100µF                        C_0201_0603Metric                                    56.8200    40.8900  270.0000  bottom
+C34       100µF                        C_1206_3216Metric                                    51.5300    39.9900  180.0000  bottom
 C35       4.7µF                        C_0201_0603Metric                                    58.6900    40.8900  270.0000  bottom
 C36       4.7µF                        C_0201_0603Metric                                    59.6500    51.4800    0.0000  bottom
 C37       470nF                         C_0201_0603Metric                                    44.0750    52.8500   90.0000  bottom
 C38       470nF                         C_0201_0603Metric                                    44.0750    55.8500  270.0000  bottom
 C39       470nF                         C_0201_0603Metric                                    47.0750    56.8500   90.0000  bottom
 C40       470nF                         C_0201_0603Metric                                    59.6200    40.8900  270.0000  bottom
-C41       100µF                        C_0201_0603Metric                                    59.6500    53.1500    0.0000  bottom
+C41       100µF                        C_1206_3216Metric                                    60.1300    56.5200   90.0000  bottom
 C42       4.7µF                        C_0201_0603Metric                                    37.7000    56.7100  180.0000  bottom
 C43       4.7µF                        C_0201_0603Metric                                    38.4900    58.7700  180.0000  bottom
 C44       470nF                         C_0201_0603Metric                                    59.6500    50.6400    0.0000  bottom
@@ -80,7 +80,7 @@ L1        1.5µH                        L_0402_1005Metric                       
 L2        3.3µH                        L_0402_1005Metric                                    15.0750    69.9750  270.0000  top
 L3        2.2µH                        L_0402_1005Metric                                    18.8750    66.6850  270.0000  top
 L4        3.3µH                        L_0402_1005Metric                                    15.0750    74.4100  270.0000  top
-L5        10µH                         L_0402_1005Metric                                    73.6500    36.9000    0.0000  top
+L5        10µH                         L_0603_1608Metric                                    73.7400    36.5300    0.0000  top
 L6        600R/0.5A                     L_0402_1005Metric                                    14.6500    52.7200   90.0000  top
 L7        600R/0.5A                     L_0402_1005Metric                                    14.7100    57.0450  270.0000  top
 Q1        MBT3904DW1                    SOT-363_SC-70-6                                      32.6750    68.0750    0.0000  top
