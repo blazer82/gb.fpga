@@ -96,7 +96,7 @@ F 0 "U2" H 9500 4050 50  0000 L CNN
 F 1 "MX25R3235FZBxx1" H 9500 3950 50  0000 L CNN
 F 2 "Package_SON:USON-8_4.0x3.0mm_P0.8mm" H 9050 3600 50  0001 C CNN
 F 3 "http://www.macronix.com/Lists/Datasheet/Attachments/7534/MX25R3235F,%20Wide%20Range,%2032Mb,%20v1.6.pdf" H 9050 4200 50  0001 C CNN
-F 4 "MX25R3235FZBIL0" H 9050 4200 50  0001 C CNN "Manufacturer Part Number"
+F 4 "MX25L3233FZBI-08Q" H 9050 4200 50  0001 C CNN "Manufacturer Part Number"
 	1    9050 4200
 	1    0    0    -1  
 $EndComp
