@@ -628,8 +628,6 @@ Wire Wire Line
 Wire Wire Line
 	5500 3400 5500 3600
 Connection ~ 5500 3600
-Text GLabel 3550 4000 0    50   Input ~ 0
-VOUT
 Wire Wire Line
 	3550 4000 3650 4000
 Connection ~ 3650 4000
@@ -1063,4 +1061,6 @@ F 3 "" H 7100 2900 50  0001 C CNN
 	1    7100 2900
 	1    0    0    -1  
 $EndComp
+Text GLabel 3550 4000 0    50   UnSpc ~ 0
+USB_5V
 $EndSCHEMATC
