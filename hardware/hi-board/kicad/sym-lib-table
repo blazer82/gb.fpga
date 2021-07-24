@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name hi-board)(type Legacy)(uri /Users/raphael/Documents/ProductionBuild/Sources/gameboy.fpga/hardware/hi-board/kicad/hi-board.lib)(options "")(descr ""))
+)
