@@ -3,7 +3,7 @@
 module top
     (
         input wire clk,
-        input wire[0:0] btn,
+        input wire[1:0] btn,
         output wire[1:0] led,
         output wire pio1,  // SCLK
         output wire pio2,  // SOUT
@@ -49,8 +49,10 @@ module top
     clock_div c2 (.clk_in(clk_buf50), .clk_out(clk_gb));
     defparam c2.DIV_2N = 6;
 
+    reg halt = 0;
     reg rst = 0;
     reg[7:0] keypad = 8'h00;
+    reg[15:0] debounce = 0;
     wire gb_pclk;
     wire gb_de;
     wire gb_hsync;
@@ -63,7 +65,7 @@ module top
     wire[15:0] gb_left;
     wire[15:0] gb_right;
     boy b1 (
-        .clk(clk_gb),
+        .clk(clk_gb | halt),
         .rst(rst),
         .key(keypad),
         .cpl(gb_pclk),
@@ -97,12 +99,22 @@ module top
                 rst_delay <= rst_delay + 1;
         end
     end
+    
+    always @(posedge clk) begin
+        if (btn[1] && !debounce)
+            halt = !halt;
+    end
+    
+    always @(posedge clk) begin
+        if (!btn[1] || debounce != 1)
+            debounce = debounce + 1;
+    end
 
     display d1 (.clk(clk_buf60), .pclk(pclk), .hsync(hsync), .vsync(vsync), .de(de), .color());
     defparam d1.CLK_DIV_2N = 2;
 
     st7701_init st7701 (.clk(clk), .sclk(pio1), .sout(pio2), .cs(pio3), .rst(pio4));
-    
+
     video_buffer buff1 (
         .gb_pclk(gb_pclk),
         .gb_de(gb_de),
@@ -116,7 +128,7 @@ module top
         .vsync(vsync),
         .color(color)
     );
-    
+
     assign pio42 = color[15];
     assign pio43 = color[10];
     assign pio44 = color[4];
@@ -124,14 +136,14 @@ module top
     assign pio46 = vsync;
     assign pio47 = hsync;
     assign pio48 = pclk;
-    
+
     blk_mem_gen_1 rom (
         .addra(gb_addr),
         .clka(clk_gb),
         .douta(gb_din),
         .ena(gb_rd)
     );
-    
+
     pwm sl (.clk(gb_pclk), .digital_in(gb_left[14:6]), .pwm(pio8));
     defparam sl.WIDTH = 9;
     pwm sr (.clk(gb_pclk), .digital_in(gb_right[14:6]), .pwm(pio9));
