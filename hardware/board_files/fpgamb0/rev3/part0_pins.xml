@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<part_info part_name="xc7s25ftgb196-1">
+    <pins>
+        <pin index="0" name="clk" iostandard="LVCMOS33" loc="H3" /> <!-- Schematic Name: GCLK -->
+
+        <pin index="1" name="usb_uart_txd" iostandard="LVCMOS33" loc="G1" /> <!-- Schematic Name: UART_RXD_OUT -->
+        <pin index="2" name="usb_uart_rxd" iostandard="LVCMOS33" loc="F1" /> <!-- Schematic Name: UART_TXD_IN -->
+
+        <pin index="3" name="qspi_db0" iostandard="LVCMOS33" loc="B11" /> <!-- Schematic Name: QSPI_DQ0 -->
+        <pin index="4" name="qspi_db1" iostandard="LVCMOS33" loc="B12" /> <!-- Schematic Name: QSPI_DQ1 -->
+        <pin index="5" name="qspi_db2" iostandard="LVCMOS33" loc="D10" /> <!-- Schematic Name: QSPI_DQ2 -->
+        <pin index="6" name="qspi_db3" iostandard="LVCMOS33" loc="C10" /> <!-- Schematic Name: QSPI_DQ3 -->
+        <pin index="7" name="qspi_csn" iostandard="LVCMOS33" loc="C11" /> <!-- Schematic Name: QSPI_CS -->
+        <pin index="8" name="qspi_sck" iostandard="LVCMOS33" loc="A10" /> <!-- Schematic Name: QSPI_CLK -->
+    </pins>
+</part_info>
