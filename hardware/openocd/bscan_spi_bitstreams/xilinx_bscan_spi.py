@@ -318,6 +318,7 @@ class XilinxBscanSpi(xilinx.XilinxPlatform):
     packages = {
         # (package-speedgrade, id): [cs_n, clk, mosi, miso, *pullups]
         ("ftgb196-1", 1): ["C11", None, "B11", "B12", "D10", "C10"],
+        # ("csga225-1", 1): ["L11", None, "H14", "H15", "J12", "K13"],
     }
 
     pinouts = {
@@ -325,7 +326,7 @@ class XilinxBscanSpi(xilinx.XilinxPlatform):
         # should not matter.
         #
         # chip: (package, id, standard, class)
-        "xc7s25": ("ftgb196-1", 1, "LVCMOS25", Series7),
+        "xc7s25": ("ftgb196-1", 1, "LVCMOS33", Series7),
     }
 
     def __init__(self, device, pins, std, toolchain="ise"):
