@@ -15,7 +15,9 @@ module top
         output wire[5:0] disp_g,
         output wire[4:0] disp_b,
         output wire audio_l,
-        output wire audio_r
+        output wire audio_r,
+        output wire qspi_cs,
+        output wire[1:0] qspi_dq
     );
 
     wire clk_gb;
@@ -115,5 +117,8 @@ module top
     defparam sl.WIDTH = 9;
     pwm sr (.clk(gb_pclk), .digital_in(gb_right[14:6]), .pwm(audio_r));
     defparam sr.WIDTH = 9;
+
+    // Flash config (set QE bit)
+    flash_config flash(.clk(clk), .cs(qspi_cs), .sdi(qspi_dq[1]), .sdo(qspi_dq[0]));
 
 endmodule

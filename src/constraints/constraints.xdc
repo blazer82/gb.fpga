@@ -82,9 +82,9 @@ set_property -dict {PACKAGE_PIN M11 IOSTANDARD LVCMOS33} [get_ports audio_r]
 
 ## Quad SPI Flash
 ## Note: QSPI clock can only be accessed through the STARTUPE2 primitive
-#set_property -dict { PACKAGE_PIN C11   IOSTANDARD LVCMOS33 } [get_ports { qspi_cs }]
-#set_property -dict { PACKAGE_PIN B11   IOSTANDARD LVCMOS33 } [get_ports { qspi_dq[0] }]
-#set_property -dict { PACKAGE_PIN B12   IOSTANDARD LVCMOS33 } [get_ports { qspi_dq[1] }]
+set_property -dict { PACKAGE_PIN C11   IOSTANDARD LVCMOS33 } [get_ports { qspi_cs }]
+set_property -dict { PACKAGE_PIN B11   IOSTANDARD LVCMOS33 } [get_ports { qspi_dq[0] }]
+set_property -dict { PACKAGE_PIN B12   IOSTANDARD LVCMOS33 } [get_ports { qspi_dq[1] }]
 #set_property -dict { PACKAGE_PIN D10   IOSTANDARD LVCMOS33 } [get_ports { qspi_dq[2] }]
 #set_property -dict { PACKAGE_PIN C10   IOSTANDARD LVCMOS33 } [get_ports { qspi_dq[3] }]
 
