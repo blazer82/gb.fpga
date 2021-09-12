@@ -1,0 +1,259 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 3 3
+Title "Audio"
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text GLabel 3050 3050 0    50   Input ~ 0
+AUD_L
+Text GLabel 3050 3400 0    50   Input ~ 0
+AUD_R
+$Comp
+L Device:R_Small R?
+U 1 1 6140BBA9
+P 3500 3050
+F 0 "R?" V 3400 2950 50  0000 C CNN
+F 1 "1k" V 3400 3150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 3500 3050 50  0001 C CNN
+F 3 "~" H 3500 3050 50  0001 C CNN
+	1    3500 3050
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 6140C505
+P 3500 3400
+F 0 "R?" V 3400 3300 50  0000 C CNN
+F 1 "1k" V 3400 3500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 3500 3400 50  0001 C CNN
+F 3 "~" H 3500 3400 50  0001 C CNN
+	1    3500 3400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3050 3400 3400 3400
+Wire Wire Line
+	3050 3050 3400 3050
+$Comp
+L Device:C_Small C?
+U 1 1 6140D2D6
+P 3900 3650
+F 0 "C?" H 3992 3696 50  0000 L CNN
+F 1 "4.7nF" H 3992 3605 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 3900 3650 50  0001 C CNN
+F 3 "~" H 3900 3650 50  0001 C CNN
+	1    3900 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 3550 3900 3400
+Wire Wire Line
+	3900 3050 3600 3050
+$Comp
+L Device:R_Small R?
+U 1 1 6140E5E1
+P 4700 3400
+F 0 "R?" V 4600 3300 50  0000 C CNN
+F 1 "10k" V 4600 3500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 4700 3400 50  0001 C CNN
+F 3 "~" H 4700 3400 50  0001 C CNN
+	1    4700 3400
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 6140EB89
+P 4300 3650
+F 0 "R?" H 4359 3696 50  0000 L CNN
+F 1 "4.7k" H 4359 3605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 4300 3650 50  0001 C CNN
+F 3 "~" H 4300 3650 50  0001 C CNN
+	1    4300 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 3400 3900 3400
+Connection ~ 3900 3400
+Wire Wire Line
+	3900 3400 3900 3050
+Wire Wire Line
+	3900 3400 4300 3400
+Wire Wire Line
+	4300 3400 4300 3550
+Wire Wire Line
+	4300 3400 4600 3400
+Connection ~ 4300 3400
+$Comp
+L Amplifier_Audio:LM386 U?
+U 1 1 614123AA
+P 5400 3500
+F 0 "U?" H 5550 3650 50  0000 L CNN
+F 1 "LM386" H 5550 3400 50  0000 L CNN
+F 2 "Package_SO:VSSOP-8_3.0x3.0mm_P0.65mm" H 5500 3600 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm386.pdf" H 5600 3700 50  0001 C CNN
+	1    5400 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 3400 5100 3400
+$Comp
+L power:GND #PWR?
+U 1 1 614151EA
+P 5300 4050
+F 0 "#PWR?" H 5300 3800 50  0001 C CNN
+F 1 "GND" H 5305 3877 50  0000 C CNN
+F 2 "" H 5300 4050 50  0001 C CNN
+F 3 "" H 5300 4050 50  0001 C CNN
+	1    5300 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 4050 5300 3800
+Wire Wire Line
+	5100 3600 5100 4050
+$Comp
+L power:GND #PWR?
+U 1 1 61415665
+P 5100 4050
+F 0 "#PWR?" H 5100 3800 50  0001 C CNN
+F 1 "GND" H 5105 3877 50  0000 C CNN
+F 2 "" H 5100 4050 50  0001 C CNN
+F 3 "" H 5100 4050 50  0001 C CNN
+	1    5100 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61415B18
+P 4300 4050
+F 0 "#PWR?" H 4300 3800 50  0001 C CNN
+F 1 "GND" H 4305 3877 50  0000 C CNN
+F 2 "" H 4300 4050 50  0001 C CNN
+F 3 "" H 4300 4050 50  0001 C CNN
+	1    4300 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61415CE7
+P 3900 4050
+F 0 "#PWR?" H 3900 3800 50  0001 C CNN
+F 1 "GND" H 3905 3877 50  0000 C CNN
+F 2 "" H 3900 4050 50  0001 C CNN
+F 3 "" H 3900 4050 50  0001 C CNN
+	1    3900 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 4050 3900 3750
+Wire Wire Line
+	4300 4050 4300 3750
+$Comp
+L power:+12V #PWR?
+U 1 1 614164D1
+P 5300 3100
+F 0 "#PWR?" H 5300 2950 50  0001 C CNN
+F 1 "+12V" H 5315 3273 50  0000 C CNN
+F 2 "" H 5300 3100 50  0001 C CNN
+F 3 "" H 5300 3100 50  0001 C CNN
+	1    5300 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 3100 5300 3200
+NoConn ~ 5400 3200
+NoConn ~ 5500 3800
+NoConn ~ 5400 3800
+$Comp
+L Device:C_Small C?
+U 1 1 614175AB
+P 6000 3650
+F 0 "C?" H 6092 3696 50  0000 L CNN
+F 1 "47nF" H 6092 3605 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 6000 3650 50  0001 C CNN
+F 3 "~" H 6000 3650 50  0001 C CNN
+	1    6000 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 61418246
+P 6000 3900
+F 0 "R?" H 6059 3946 50  0000 L CNN
+F 1 "10Ω" H 6059 3855 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 6000 3900 50  0001 C CNN
+F 3 "~" H 6000 3900 50  0001 C CNN
+	1    6000 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61418A78
+P 6000 4050
+F 0 "#PWR?" H 6000 3800 50  0001 C CNN
+F 1 "GND" H 6005 3877 50  0000 C CNN
+F 2 "" H 6000 4050 50  0001 C CNN
+F 3 "" H 6000 4050 50  0001 C CNN
+	1    6000 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6000 4050 6000 4000
+Wire Wire Line
+	6000 3800 6000 3750
+Wire Wire Line
+	6000 3550 6000 3500
+Wire Wire Line
+	6000 3500 5700 3500
+$Comp
+L Device:CP_Small C?
+U 1 1 6141A883
+P 6500 3500
+F 0 "C?" V 6725 3500 50  0000 C CNN
+F 1 "330µF" V 6634 3500 50  0000 C CNN
+F 2 "" H 6500 3500 50  0001 C CNN
+F 3 "~" H 6500 3500 50  0001 C CNN
+	1    6500 3500
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6000 3500 6400 3500
+Connection ~ 6000 3500
+$Comp
+L Connector:Conn_01x02_Female J?
+U 1 1 6141BB60
+P 7100 3500
+F 0 "J?" H 7128 3476 50  0000 L CNN
+F 1 "Speaker" H 7128 3385 50  0000 L CNN
+F 2 "" H 7100 3500 50  0001 C CNN
+F 3 "~" H 7100 3500 50  0001 C CNN
+	1    7100 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6600 3500 6900 3500
+Wire Wire Line
+	6900 3600 6850 3600
+Wire Wire Line
+	6850 3600 6850 4050
+$Comp
+L power:GND #PWR?
+U 1 1 6141CFCA
+P 6850 4050
+F 0 "#PWR?" H 6850 3800 50  0001 C CNN
+F 1 "GND" H 6855 3877 50  0000 C CNN
+F 2 "" H 6850 4050 50  0001 C CNN
+F 3 "" H 6850 4050 50  0001 C CNN
+	1    6850 4050
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
