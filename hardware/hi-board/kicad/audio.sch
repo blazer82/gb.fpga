@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 3
+Sheet 3 5
 Title "Audio"
 Date ""
 Rev ""
@@ -219,8 +219,8 @@ L Device:CP_Small C1
 U 1 1 6141A883
 P 6500 3500
 F 0 "C1" V 6725 3500 50  0000 C CNN
-F 1 "330µF" V 6634 3500 50  0000 C CNN
-F 2 "" H 6500 3500 50  0001 C CNN
+F 1 "220µF" V 6634 3500 50  0000 C CNN
+F 2 "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm" H 6500 3500 50  0001 C CNN
 F 3 "~" H 6500 3500 50  0001 C CNN
 	1    6500 3500
 	0    -1   -1   0   
@@ -234,7 +234,7 @@ U 1 1 6141BB60
 P 7100 3500
 F 0 "J2" H 7128 3476 50  0000 L CNN
 F 1 "Speaker" H 7128 3385 50  0000 L CNN
-F 2 "" H 7100 3500 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 7100 3500 50  0001 C CNN
 F 3 "~" H 7100 3500 50  0001 C CNN
 	1    7100 3500
 	1    0    0    -1  
