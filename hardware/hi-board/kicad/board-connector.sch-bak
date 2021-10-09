@@ -269,36 +269,36 @@ Text GLabel 6050 3050 2    50   Output ~ 0
 DISP_CS
 Text GLabel 6050 3150 2    50   Output ~ 0
 DISP_RST
-Text GLabel 6050 3350 2    50   Output ~ 0
-DISP_B0
-Text GLabel 6050 3450 2    50   Output ~ 0
-DISP_B1
-Text GLabel 6050 3550 2    50   Output ~ 0
-DISP_B2
-Text GLabel 6050 3650 2    50   Output ~ 0
-DISP_B3
-Text GLabel 6050 3750 2    50   Output ~ 0
-DISP_B4
-Text GLabel 6050 3850 2    50   Output ~ 0
-DISP_G0
-Text GLabel 6050 3950 2    50   Output ~ 0
-DISP_G1
-Text GLabel 6050 4050 2    50   Output ~ 0
-DISP_G2
-Text GLabel 6050 4150 2    50   Output ~ 0
-DISP_G3
-Text GLabel 6050 4250 2    50   Output ~ 0
-DISP_G4
-Text GLabel 6050 4350 2    50   Output ~ 0
-DISP_G5
-Text GLabel 6050 4450 2    50   Output ~ 0
-DISP_R0
-Text GLabel 6050 4550 2    50   Output ~ 0
-DISP_R1
-Text GLabel 6050 4650 2    50   Output ~ 0
-DISP_R2
-Text GLabel 6050 4750 2    50   Output ~ 0
-DISP_R3
 Text GLabel 6050 4850 2    50   Output ~ 0
+DISP_B0
+Text GLabel 6050 4750 2    50   Output ~ 0
+DISP_B1
+Text GLabel 6050 4650 2    50   Output ~ 0
+DISP_B2
+Text GLabel 6050 4550 2    50   Output ~ 0
+DISP_B3
+Text GLabel 6050 4450 2    50   Output ~ 0
+DISP_B4
+Text GLabel 6050 4350 2    50   Output ~ 0
+DISP_G0
+Text GLabel 6050 4250 2    50   Output ~ 0
+DISP_G1
+Text GLabel 6050 4150 2    50   Output ~ 0
+DISP_G2
+Text GLabel 6050 4050 2    50   Output ~ 0
+DISP_G3
+Text GLabel 6050 3950 2    50   Output ~ 0
+DISP_G4
+Text GLabel 6050 3850 2    50   Output ~ 0
+DISP_G5
+Text GLabel 6050 3750 2    50   Output ~ 0
+DISP_R0
+Text GLabel 6050 3650 2    50   Output ~ 0
+DISP_R1
+Text GLabel 6050 3550 2    50   Output ~ 0
+DISP_R2
+Text GLabel 6050 3450 2    50   Output ~ 0
+DISP_R3
+Text GLabel 6050 3350 2    50   Output ~ 0
 DISP_R4
 $EndSCHEMATC
