@@ -398,23 +398,23 @@ Wire Wire Line
 	5500 6700 5500 6400
 Wire Wire Line
 	1750 3500 2550 3500
-Text GLabel 1750 5600 0    50   Input ~ 0
+Text GLabel 1750 5200 0    50   Input ~ 0
 DISP_R0
 Wire Wire Line
 	1750 5600 2550 5600
-Text GLabel 1750 5500 0    50   Input ~ 0
+Text GLabel 1750 5300 0    50   Input ~ 0
 DISP_R1
 Text GLabel 1750 5400 0    50   Input ~ 0
 DISP_R2
-Text GLabel 1750 5300 0    50   Input ~ 0
+Text GLabel 1750 5500 0    50   Input ~ 0
 DISP_R3
-Text GLabel 1750 5200 0    50   Input ~ 0
+Text GLabel 1750 5600 0    50   Input ~ 0
 DISP_R4
-Text GLabel 1750 5100 0    50   Input ~ 0
+Text GLabel 1750 4000 0    50   Input ~ 0
 DISP_G0
-Text GLabel 1750 5000 0    50   Input ~ 0
+Text GLabel 1750 4100 0    50   Input ~ 0
 DISP_G1
-Text GLabel 1750 4900 0    50   Input ~ 0
+Text GLabel 1750 4200 0    50   Input ~ 0
 DISP_G2
 Wire Wire Line
 	1750 4900 2550 4900
@@ -496,13 +496,13 @@ Wire Wire Line
 	3950 4300 3950 4000
 Wire Wire Line
 	3950 4000 3550 4000
-Text GLabel 1750 4200 0    50   Input ~ 0
+Text GLabel 1750 4900 0    50   Input ~ 0
 DISP_G3
 Wire Wire Line
 	1750 4200 2550 4200
-Text GLabel 1750 4100 0    50   Input ~ 0
+Text GLabel 1750 5000 0    50   Input ~ 0
 DISP_G4
-Text GLabel 1750 4000 0    50   Input ~ 0
+Text GLabel 1750 5100 0    50   Input ~ 0
 DISP_G5
 Wire Wire Line
 	1750 4100 2550 4100
@@ -516,17 +516,17 @@ Wire Wire Line
 	3550 3700 6000 3700
 Wire Wire Line
 	3550 3600 6000 3600
-Text GLabel 1750 3900 0    50   Input ~ 0
+Text GLabel 1750 3500 0    50   Input ~ 0
 DISP_B0
 Wire Wire Line
 	1750 3900 2550 3900
-Text GLabel 1750 3800 0    50   Input ~ 0
+Text GLabel 1750 3600 0    50   Input ~ 0
 DISP_B1
 Text GLabel 1750 3700 0    50   Input ~ 0
 DISP_B2
-Text GLabel 1750 3600 0    50   Input ~ 0
+Text GLabel 1750 3800 0    50   Input ~ 0
 DISP_B3
-Text GLabel 1750 3500 0    50   Input ~ 0
+Text GLabel 1750 3900 0    50   Input ~ 0
 DISP_B4
 Wire Wire Line
 	1750 3600 2550 3600
