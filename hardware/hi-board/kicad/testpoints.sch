@@ -1,0 +1,161 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 7 7
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:TestPoint_Alt TP1
+U 1 1 61682443
+P 3500 2550
+F 0 "TP1" H 3558 2668 50  0000 L CNN
+F 1 "GND" H 3558 2577 50  0000 L CNN
+F 2 "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm" H 3700 2550 50  0001 C CNN
+F 3 "~" H 3700 2550 50  0001 C CNN
+	1    3500 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0206
+U 1 1 61682CF9
+P 3500 2550
+F 0 "#PWR0206" H 3500 2300 50  0001 C CNN
+F 1 "GND" H 3505 2377 50  0000 C CNN
+F 2 "" H 3500 2550 50  0001 C CNN
+F 3 "" H 3500 2550 50  0001 C CNN
+	1    3500 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint_Alt TP2
+U 1 1 61685825
+P 3950 2550
+F 0 "TP2" H 4008 2668 50  0000 L CNN
+F 1 "GND" H 4008 2577 50  0000 L CNN
+F 2 "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm" H 4150 2550 50  0001 C CNN
+F 3 "~" H 4150 2550 50  0001 C CNN
+	1    3950 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0207
+U 1 1 6168582B
+P 3950 2550
+F 0 "#PWR0207" H 3950 2300 50  0001 C CNN
+F 1 "GND" H 3955 2377 50  0000 C CNN
+F 2 "" H 3950 2550 50  0001 C CNN
+F 3 "" H 3950 2550 50  0001 C CNN
+	1    3950 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint_Alt TP3
+U 1 1 616862B9
+P 4400 2550
+F 0 "TP3" H 4458 2668 50  0000 L CNN
+F 1 "GND" H 4458 2577 50  0000 L CNN
+F 2 "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm" H 4600 2550 50  0001 C CNN
+F 3 "~" H 4600 2550 50  0001 C CNN
+	1    4400 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0208
+U 1 1 616862BF
+P 4400 2550
+F 0 "#PWR0208" H 4400 2300 50  0001 C CNN
+F 1 "GND" H 4405 2377 50  0000 C CNN
+F 2 "" H 4400 2550 50  0001 C CNN
+F 3 "" H 4400 2550 50  0001 C CNN
+	1    4400 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint_Alt TP4
+U 1 1 6168682C
+P 3500 3500
+F 0 "TP4" H 3442 3526 50  0000 R CNN
+F 1 "VOUT" H 3442 3617 50  0000 R CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 3700 3500 50  0001 C CNN
+F 3 "~" H 3700 3500 50  0001 C CNN
+	1    3500 3500
+	-1   0    0    1   
+$EndComp
+Text GLabel 3500 3500 1    50   Input ~ 0
+VOUT
+$Comp
+L Connector:TestPoint_Alt TP5
+U 1 1 6168758F
+P 3950 3500
+F 0 "TP5" H 3892 3526 50  0000 R CNN
+F 1 "3V0" H 3892 3617 50  0000 R CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 4150 3500 50  0001 C CNN
+F 3 "~" H 4150 3500 50  0001 C CNN
+	1    3950 3500
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:+3V0 #PWR0209
+U 1 1 61687C87
+P 3950 3500
+F 0 "#PWR0209" H 3950 3350 50  0001 C CNN
+F 1 "+3V0" H 3965 3673 50  0000 C CNN
+F 2 "" H 3950 3500 50  0001 C CNN
+F 3 "" H 3950 3500 50  0001 C CNN
+	1    3950 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint_Alt TP6
+U 1 1 61688335
+P 4400 3500
+F 0 "TP6" H 4342 3526 50  0000 R CNN
+F 1 "3V3" H 4342 3617 50  0000 R CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 4600 3500 50  0001 C CNN
+F 3 "~" H 4600 3500 50  0001 C CNN
+	1    4400 3500
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:+3V3 #PWR0210
+U 1 1 61688E2F
+P 4400 3500
+F 0 "#PWR0210" H 4400 3350 50  0001 C CNN
+F 1 "+3V3" H 4415 3673 50  0000 C CNN
+F 2 "" H 4400 3500 50  0001 C CNN
+F 3 "" H 4400 3500 50  0001 C CNN
+	1    4400 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint_Alt TP7
+U 1 1 616893B3
+P 4800 3500
+F 0 "TP7" H 4742 3526 50  0000 R CNN
+F 1 "12V" H 4742 3617 50  0000 R CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 5000 3500 50  0001 C CNN
+F 3 "~" H 5000 3500 50  0001 C CNN
+	1    4800 3500
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:+12V #PWR0211
+U 1 1 61689BD6
+P 4800 3500
+F 0 "#PWR0211" H 4800 3350 50  0001 C CNN
+F 1 "+12V" H 4815 3673 50  0000 C CNN
+F 2 "" H 4800 3500 50  0001 C CNN
+F 3 "" H 4800 3500 50  0001 C CNN
+	1    4800 3500
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC

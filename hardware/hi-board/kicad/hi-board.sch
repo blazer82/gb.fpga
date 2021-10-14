@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 6
+Sheet 1 7
 Title "FPGAMB0 (HI Board)"
 Date ""
 Rev ""
@@ -42,5 +42,11 @@ S 2050 3850 500  150
 U 61435FBD
 F0 "Joypad" 50
 F1 "joypad.sch" 50
+$EndSheet
+$Sheet
+S 2050 4400 500  150 
+U 6167F82D
+F0 "Testpoints" 50
+F1 "testpoints.sch" 50
 $EndSheet
 $EndSCHEMATC
