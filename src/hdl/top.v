@@ -4,7 +4,7 @@ module top
     (
         input wire clk,
         output wire disp_sclk,
-        output wire disp_sdo,
+        output wire disp_sdi,
         output wire disp_cs,
         output wire disp_rst,
         output wire disp_de,
@@ -82,7 +82,7 @@ module top
     display d1 (.clk(clk_buf60), .pclk(pclk), .hsync(hsync), .vsync(vsync), .de(de), .color());
     defparam d1.CLK_DIV_2N = 2;
 
-    st7701_init st7701 (.clk(clk), .sclk(disp_sclk), .sout(disp_sdo), .cs(disp_cs), .rst(disp_rst));
+    st7701_init st7701 (.clk(clk), .sclk(disp_sclk), .sout(disp_sdi), .cs(disp_cs), .rst(disp_rst));
 
     video_buffer buff1 (
         .gb_pclk(gb_pclk),

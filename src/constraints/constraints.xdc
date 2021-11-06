@@ -42,8 +42,8 @@ set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets clk_IBUF]
 #set_property -dict { PACKAGE_PIN A12   IOSTANDARD LVCMOS33 } [get_ports { gb_d[7] }]
 
 ## Board connector ports
-set_property -dict {PACKAGE_PIN A5 IOSTANDARD LVCMOS33} [get_ports disp_sdo]
-#set_property -dict { PACKAGE_PIN B5    IOSTANDARD LVCMOS33 } [get_ports { disp_sdi }]
+#set_property -dict {PACKAGE_PIN A5 IOSTANDARD LVCMOS33} [get_ports disp_sdo]
+set_property -dict { PACKAGE_PIN B5    IOSTANDARD LVCMOS33 } [get_ports { disp_sdi }]
 set_property -dict {PACKAGE_PIN A4 IOSTANDARD LVCMOS33} [get_ports disp_sclk]
 set_property -dict {PACKAGE_PIN C4 IOSTANDARD LVCMOS33} [get_ports disp_cs]
 set_property -dict {PACKAGE_PIN A3 IOSTANDARD LVCMOS33} [get_ports disp_rst]
