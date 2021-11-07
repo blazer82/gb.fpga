@@ -255,13 +255,13 @@ module st7701_init
 
     always @(negedge sclk) begin
         case (delay_cnt)
-            10000: rst <= 0;
-            20000: rst <= 1;
+            1500000: rst <= 0;
+            1600000: rst <= 1;
         endcase
     end
 
     always @(negedge sclk) begin
-        if ((data_cnt == 0 && delay_cnt > 1500000) || (data_cnt < DATA_MAX_CNT && delay_cnt == 3000000)) begin
+        if ((data_cnt == 0 && delay_cnt > 11500000) || (data_cnt < DATA_MAX_CNT && delay_cnt == 13000000)) begin
             cs <= 0;
             sout <= data[data_cnt][8 - bit_cnt];
 
@@ -278,7 +278,7 @@ module st7701_init
     end
 
     always @(negedge sclk) begin
-        if (delay_cnt < 3000000)
+        if (delay_cnt < 13000000)
             delay_cnt <= delay_cnt + 1;
     end
 endmodule
