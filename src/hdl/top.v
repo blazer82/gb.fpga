@@ -24,7 +24,15 @@ module top
         output wire gb_cs,
         inout wire gb_rst,
         output wire[15:0] gb_a,
-        inout wire[7:0] gb_d
+        inout wire[7:0] gb_d,
+        input wire joy_b,
+        input wire joy_a,
+        input wire joy_start,
+        input wire joy_select,
+        input wire joy_right,
+        input wire joy_up,
+        input wire joy_down,
+        input wire joy_left
     );
 
     wire clk_gb;
@@ -47,7 +55,7 @@ module top
 
     reg halt = 0;
     reg rst = 0;
-    reg[7:0] keypad = 8'h00;
+    wire[7:0] keypad = {~joy_down, ~joy_up, ~joy_left, ~joy_right, ~joy_start, ~joy_select, ~joy_b, ~joy_a};
     wire gb_pclk;
     wire gb_de;
     wire gb_hsync;
