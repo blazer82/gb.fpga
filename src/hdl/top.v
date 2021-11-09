@@ -17,7 +17,14 @@ module top
         output wire audio_l,
         output wire audio_r,
         output wire qspi_cs,
-        output wire[1:0] qspi_dq
+        output wire[1:0] qspi_dq,
+        output wire gb_clk,
+        output wire gb_wr,
+        output wire gb_rd,
+        output wire gb_cs,
+        inout wire gb_rst,
+        output wire[15:0] gb_a,
+        inout wire[7:0] gb_d
     );
 
     wire clk_gb;
@@ -46,14 +53,23 @@ module top
     wire gb_hsync;
     wire gb_vsync;
     wire[1:0] gb_pixel;
-    wire[15:0] gb_addr;
+    //wire[15:0] gb_addr;
     wire[7:0] gb_dout;
     wire[7:0] gb_din;
-    wire gb_rd;
+    //wire gb_rd;
     wire[15:0] gb_left;
     wire[15:0] gb_right;
+    wire rd;
+    wire wr;
+    reg[7:0] data_nirvana;
+    assign gb_rst = ~rst;
+    assign gb_rd = ~rd;
+    assign gb_wr = ~wr;
+    assign gb_dout = !rd && wr ? gb_d : data_nirvana;
+    assign gb_din = rd || !wr ? gb_d : data_nirvana;
     boy b1 (
         .clk(clk_gb | halt),
+        .phi(gb_clk),
         .rst(rst),
         .key(keypad),
         .cpl(gb_pclk),
@@ -61,10 +77,11 @@ module top
         .vs(gb_vsync),
         .pixel(gb_pixel),
         .valid(gb_de),
-        .a(gb_addr),
+        .a(gb_a),
         .dout(gb_dout),
         .din(gb_din),
-        .rd(gb_rd),
+        .rd(rd),
+        .wr(wr),
         .left(gb_left),
         .right(gb_right)
     );
@@ -106,12 +123,12 @@ module top
     assign disp_hs = hsync;
     assign disp_pclk = pclk;
 
-    blk_mem_gen_1 rom (
+    /*blk_mem_gen_1 rom (
         .addra(gb_addr),
         .clka(clk_gb),
         .douta(gb_din),
         .ena(gb_rd)
-    );
+    );*/
 
     pwm sl (.clk(gb_pclk), .digital_in(gb_left[14:6]), .pwm(audio_l));
     defparam sl.WIDTH = 9;
