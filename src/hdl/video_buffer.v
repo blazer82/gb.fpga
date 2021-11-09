@@ -84,7 +84,7 @@ module video_buffer
         end
     end
 
-    assign addr_out = (y_in < 145) ? y_in * 160 + x_in : 144 * 160 + x_in;
+    assign addr_out = (y_in < 145) ? (144 - y_in) * 160 + (160 - x_in) : 144 * 160 + x_in;
 
     // Assign final output color based on pixel_out
     assign color = (pixel_out == 2'b00) ? 16'hffff : ((pixel_out == 2'b01) ? 16'hcccc : ((pixel_out == 2'b10) ? 16'h6666 : 16'h0000));
