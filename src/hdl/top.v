@@ -69,12 +69,11 @@ module top
     wire[15:0] gb_right;
     wire rd;
     wire wr;
-    reg[7:0] data_nirvana;
     assign gb_rst = ~rst;
     assign gb_rd = ~rd;
     assign gb_wr = ~wr;
-    assign gb_dout = !rd && wr ? gb_d : data_nirvana;
-    assign gb_din = rd || !wr ? gb_d : data_nirvana;
+    assign gb_din = gb_d;
+    assign gb_d = wr ? gb_dout : 8'bz;
     boy b1 (
         .clk(clk_gb | halt),
         .phi(gb_clk),
