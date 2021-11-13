@@ -46,8 +46,8 @@ module top
 
     clk_wiz_0 clk_wiz_inst (
         .clk_in1(clk),
-        .clk_out1(clk_buf60),
-        .clk_out2(clk_buf50)
+        .clk_out1(clk_buf50),
+        .clk_out2(clk_buf60)
     );
 
     clock_div c2 (.clk_in(clk_buf50), .clk_out(clk_gb));
@@ -103,7 +103,7 @@ module top
             rst_delay <= rst_delay + 1;
     end
 
-    display d1 (.clk(clk_buf60), .pclk(pclk), .hsync(hsync), .vsync(vsync), .de(de), .color());
+    display d1 (.clk(clk_buf60), .vsync_in(gb_vsync), .pclk(pclk), .hsync(hsync), .vsync(vsync), .de(de), .color());
     defparam d1.CLK_DIV_2N = 2;
 
     st7701_init st7701 (.clk(clk), .sclk(disp_sclk), .sout(disp_sdi), .cs(disp_cs), .rst(disp_rst));

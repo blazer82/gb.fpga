@@ -14,6 +14,7 @@ module display
     )
     (
         input wire clk,
+        input wire vsync_in,
         output wire pclk,
         output reg hsync,
         output reg vsync,
@@ -25,6 +26,8 @@ module display
     reg[9:0] row = 0;
     reg de_col = 1;
     reg de_row = 1;
+    reg enable = 0;
+    reg gb_vsync_detected = 0;
 
     initial begin
         hsync <= 1;
@@ -33,8 +36,19 @@ module display
         color <= 0;
     end
 
-    clock_div c1 (.clk_in(clk), .clk_out(pclk));
+    wire pclk_out;
+    clock_div c1 (.clk_in(clk), .clk_out(pclk_out));
     defparam c1.DIV_2N = CLK_DIV_2N;
+    
+    assign pclk = pclk_out & enable;
+    
+    always @(posedge vsync_in) begin
+        gb_vsync_detected <= 1;
+    end
+    
+    always @(negedge vsync_in) begin
+        enable <= 1 & gb_vsync_detected;
+    end
 
     always @(posedge pclk) begin
         case (col)
