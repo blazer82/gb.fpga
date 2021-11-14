@@ -3,7 +3,6 @@
 *.vcd
 /gb-fpga.*
 !/gb-fpga.srcs
-*.mem
-*.coe
+/roms
 .DS_Store
 *.zip
