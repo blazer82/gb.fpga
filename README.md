@@ -1,5 +1,5 @@
-## Testbench Simulation
+# FPGAMB0 - FPGA-based Handheld Console
 
-```bash
-iverilog -o main src/hdl/[tb file] && vvp main -lxt2 && open dump.lx2
-```
+## Demo (GIF)
+
+![Demo](https://github.com/blazer82/gb.fpga/raw/master/media/demo.gif)
