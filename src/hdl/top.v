@@ -147,10 +147,23 @@ module top
     // Flash config (set QE bit)
     flash_config flash(.clk(clk), .cs(qspi_cs), .sdi(qspi_dq[1]), .sdo(qspi_dq[0]));
 
-    // UART TX
+    // UART RX
+    wire rx_valid;
+    wire[7:0] rx_byte;
+    uart_rx serial_rx (
+        .clk(clk),
+        .rx(uart_rx),
+        .data_valid(rx_valid),
+        .byte(rx_byte)
+    );
+    
+    always @(posedge rx_valid) begin
+        halt <= ~halt;
+    end
 
-    wire [1:0] btn = {joy_b, joy_a};
-    wire [1:0] db_btn;
+    // UART TX
+    wire[1:0] btn = {joy_b, joy_a};
+    wire[1:0] db_btn;
     debouncer #(
         .WIDTH(2),
         .CLOCKS(1024),
