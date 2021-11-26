@@ -32,7 +32,9 @@ module top
         input wire joy_right,
         input wire joy_up,
         input wire joy_down,
-        input wire joy_left
+        input wire joy_left,
+        output wire uart_tx,
+        input wire uart_rx
     );
 
     wire clk_gb;
@@ -144,5 +146,32 @@ module top
 
     // Flash config (set QE bit)
     flash_config flash(.clk(clk), .cs(qspi_cs), .sdi(qspi_dq[1]), .sdo(qspi_dq[0]));
+
+    // UART TX
+
+    wire [1:0] btn = {joy_b, joy_a};
+    wire [1:0] db_btn;
+    debouncer #(
+        .WIDTH(2),
+        .CLOCKS(1024),
+        .CLOCKS_CLOG2(10)
+    ) m_db_btn (
+        .clk(clk),
+        .din(btn),
+        .dout(db_btn)
+    );
+
+    // Transmit "Button <#> Pressed!" whenever btn0 or btn1 is pressed.
+    uart_tx #(
+        .BAUD_2_CLOCK_RATIO(12000000 / 9600),
+        .UART_DATA_BITS(8),
+        .UART_STOP_BITS(2),
+        .BUTTON_WIDTH(2),
+        .BUTTON_POLARITY_VECTOR(2'b11)
+    ) m_uart_tx (
+        .clk(clk),
+        .btn(db_btn),
+        .tx(uart_tx)
+    );
 
 endmodule
