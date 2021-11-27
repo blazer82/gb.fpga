@@ -147,17 +147,15 @@ module top
     // Flash config (set QE bit)
     flash_config flash(.clk(clk), .cs(qspi_cs), .sdi(qspi_dq[1]), .sdo(qspi_dq[0]));
 
-    // UART RX
-    wire rx_valid;
-    wire[7:0] rx_byte;
-    uart_rx serial_rx (
+    // Halt trigger
+    wire trigger;
+    halt_trigger halt_trigger (
         .clk(clk),
         .rx(uart_rx),
-        .data_valid(rx_valid),
-        .byte(rx_byte)
+        .trigger(trigger)
     );
-    
-    always @(posedge rx_valid) begin
+
+    always @(posedge trigger) begin
         halt <= ~halt;
     end
 
