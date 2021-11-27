@@ -1,140 +1,94 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: Digilent
-// Engineer: Arthur Brown
-//
-// Create Date: 04/13/2018 03:33:26 PM
-// Module Name: uart_tx
-// Description: Prints "Button # Pressed!" whenever any one button (#) is pressed
-//
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-//
-//////////////////////////////////////////////////////////////////////////////////
+module uart_tx
+    #(
+		parameter CLKS_PER_BIT = 12000000 / 9600
+	)
+    (
+		input wire clk,
+		input wire data_valid,
+		input wire[7:0] byte,
+		output reg busy,
+		output reg tx,
+		output reg done
+    );
 
+    localparam s_IDLE         = 3'b000;
+    localparam s_TX_START_BIT = 3'b001;
+    localparam s_TX_DATA_BITS = 3'b010;
+    localparam s_TX_STOP_BIT  = 3'b011;
+    localparam s_CLEANUP      = 3'b100;
 
-module uart_tx #(
-    parameter BAUD_2_CLOCK_RATIO = 12000000 / 9600, // frequency of clk / target baud rate
-	parameter UART_DATA_BITS = 8,
-	parameter UART_STOP_BITS = 2,
-	parameter BUTTON_POLARITY_VECTOR = 2'b11, // default, both buttons are active-high
-	parameter BUTTON_WIDTH = 2 // non-functional for BUTTON_WIDTH != 2. valid_event process must be changed to handle different widths.
-) (
-    input wire clk,
-    input wire [BUTTON_WIDTH-1:0] btn,
-    output reg tx,
-    output reg busy = 1'b0
-);
-    localparam STRING_LENGTH = 19;
-    localparam BYTE_COUNT_WIDTH = 5; // = $clog2(STRING_LENGTH)
+    reg[2:0] state = s_IDLE;
+    reg[15:0] clock_cnt = 0;
+    reg[2:0] bit_index = 0;
+    reg[7:0] tx_data = 0;
 
-	//  CONTROLLER:
-//	reg busy = 1'b0;
-	reg [BUTTON_WIDTH-1:0] _btn_norm = ~BUTTON_POLARITY_VECTOR; // btn signal delayed by one cycle, for edge detection
-	wire [BUTTON_WIDTH-1:0] btn_norm = ~(btn^BUTTON_POLARITY_VECTOR); // button vector normalized to active high
-    wire [BUTTON_WIDTH-1:0] button_posedge = ~_btn_norm & btn_norm; // each bit is 1'b1 if that button has just been pressed
-	reg valid_event = 1'b0; // NOTE: if both buttons are pressed at the same time, each event will be missed
-	wire start = (busy == 1'b0 && valid_event == 1'b1) ? 1'b1 : 1'b0; // NOTE: if a press is detected while the controller is busy, the event will be missed
+    always @(posedge clk) begin
+		case (state)
+			s_IDLE: begin
+				tx <= 1'b1;
+				done <= 1'b0;
+				clock_cnt <= 0;
+				bit_index <= 0;
 
-	//  COUNTERS:
-	//  pseudo for counters:
-	//	    for byte_count in range(STRING_LENGTH)
-	//      for bit_count in range(-1, UART_DATA_BITS+UART_STOP_BITS-1)
-	//      for cd_count in range(BAUD_2_CLOCK_RATIO)
-	reg [$clog2(BAUD_2_CLOCK_RATIO)-1:0] cd_count; // clock divider counter, rolls over at approx. target baud rate
-	reg [$clog2(UART_DATA_BITS+UART_STOP_BITS+1)-1:0] bit_count; // uart frame bit counter
-	reg [BYTE_COUNT_WIDTH-1:0] byte_count; // string index counter
-	wire end_of_bit = (cd_count == BAUD_2_CLOCK_RATIO-1) ? 1'b1 : 1'b0;
-	wire end_of_byte = (end_of_bit == 1'b1 && bit_count == UART_DATA_BITS+UART_STOP_BITS-1) ? 1'b1 : 1'b0;
-	wire end_of_string = (end_of_byte == 1'b1 && byte_count == STRING_LENGTH-1) ? 1'b1 : 1'b0;
+				if (data_valid == 1'b1) begin
+					busy <= 1'b1;
+					tx_data <= byte;
+					state <= s_TX_START_BIT;
+				end else
+					state <= s_IDLE;
+			end
 
-	// DATA:
-	reg [UART_DATA_BITS-1:0] data = 'b0; // character to be sent over UART
-	reg r_btn_event = 1'b0; // contains the ID of the pressed button
+			s_TX_START_BIT: begin
+				tx <= 1'b0;
 
-	// CONTROLLER LOGIC:
-    always@(posedge clk)
-        _btn_norm <= btn_norm;
+				if (clock_cnt < CLKS_PER_BIT - 1) begin
+					clock_cnt <= clock_cnt + 1;
+					state <= s_TX_START_BIT;
+				end else begin
+					clock_cnt <= 0;
+					state <= s_TX_DATA_BITS;
+				end
+			end
 
-    always@(posedge clk) // register event code for decoding into button ID character
-        if (busy == 1'b0)
-            case (button_posedge)
-            2'b01: begin
-                valid_event <= 1'b1;
-                r_btn_event <= 1'b0;
-            end
-            2'b10: begin
-                valid_event <= 1'b1;
-                r_btn_event <= 1'b1;
-            end
-            default:
-                valid_event <= 1'b0;
-            endcase
-        else
-            valid_event <= 1'b0;
+			s_TX_DATA_BITS: begin
+				tx <= tx_data[bit_index];
 
-	always@(busy, bit_count, data)
-		if (busy == 1'b0) // hold tx high when not in use
-			tx = 1'b1;
-		else if (&bit_count == 1'b1) // START BIT (bit_count == -1)
-			tx = 1'b0;
-		else if (bit_count < UART_DATA_BITS) // DATA BITS
-			tx = data[bit_count];
-		else // STOP BITS
-			tx = 1'b1;
+				if (clock_cnt < CLKS_PER_BIT - 1) begin
+					clock_cnt <= clock_cnt + 1;
+					state <= s_TX_DATA_BITS;
+				end else begin
+					clock_cnt <= 0;
 
-    always@(posedge clk)
-        if (start == 1'b1)
-            busy <= 1'b1;
-        else if (end_of_string == 1'b1)
-            busy <= 1'b0;
-        else
-            busy <= busy;
+					if (bit_index < 7) begin
+						bit_index <= bit_index + 1;
+						state <= s_TX_DATA_BITS;
+					end else begin
+						bit_index <= 0;
+						state <= s_TX_STOP_BIT;
+					end
+				end
+			end
 
-	// COUNTERS LOGIC:
-	// each counter is configured to roll over at the applicable end_of_* signal, and reset when the transmitter is not busy
-	always@(posedge clk)
-		if (busy == 1'b0 || end_of_bit == 1'b1)
-			cd_count <= 'b0;
-		else
-			cd_count <= cd_count + 1'b1;
+			s_TX_STOP_BIT: begin
+				tx <= 1'b1;
 
-	always@(posedge clk)
-		if (busy == 1'b0 || end_of_byte == 1'b1)
-			bit_count <= ~'b0; // bit_count = -1
-		else if (end_of_bit == 1'b1)
-			bit_count <= bit_count + 1;
+				if (clock_cnt < CLKS_PER_BIT - 1) begin
+					clock_cnt <= clock_cnt + 1;
+					state <= s_TX_STOP_BIT;
+				end else begin
+					done <= 1'b1;
+					clock_cnt <= 0;
+					state <= s_CLEANUP;
+					busy <= 1'b0;
+				end
+			end
 
-	always@(posedge clk)
-		if (busy == 1'b0 || end_of_string == 1'b1)
-			byte_count <= 'b0;
-		else if (end_of_byte == 1'b1)
-			byte_count <= byte_count + 1;
+			s_CLEANUP: begin
+				state <= s_IDLE;
+			end
 
-	// DATA LOGIC:
-	always@(byte_count, r_btn_event) // select a character to send
-		case (byte_count)
-		0: data <= "B";
-		1: data <= "u";
-		2: data <= "t";
-		3: data <= "t";
-		4: data <= "o";
-		5: data <= "n";
-		6: data <= " ";
-		7: data <= (r_btn_event == 1'b1) ? "1" : "0"; // button "0" or "1"
-		8: data <= " ";
-		9: data <= "P";
-		10: data <= "r";
-		11: data <= "e";
-		12: data <= "s";
-		13: data <= "s";
-		14: data <= "e";
-		15: data <= "d";
-		16: data <= "!";
-		17: data <= "\n";
-		18: data <= "\r";
-		default: data <= "?"; // unreachable code
+			default:
+				state <= s_IDLE;
 		endcase
-
+	end
 endmodule
