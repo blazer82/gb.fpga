@@ -162,8 +162,14 @@ module top
     // Debug output
     debug debug (
         .clk(clk),
+        .gb_clk(gb_clk),
         .halt(halt),
-        .tx(uart_tx)
+        .tx(uart_tx),
+        .addr(gb_a),
+        .data(gb_din),
+        .rd(gb_rd),
+        .wr(gb_wr),
+        .cs(gb_cs)
     );
 
 endmodule
