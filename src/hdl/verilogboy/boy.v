@@ -40,7 +40,8 @@ module boy(
     output reg [15:0] right,
     // Debug interface
     output wire done,
-    output wire fault
+    output wire fault,
+    output wire [7:0] d_opcode
     );
 
     // CPU
@@ -69,7 +70,9 @@ module boy(
         .int_flags_out(cpu_int_flags_out),
         .key_in(key),
         .done(done),
-        .fault(fault));
+        .fault(fault),
+        .d_opcode(d_opcode)
+    );
 
     // High RAM
     reg [7:0] high_ram [0:127];

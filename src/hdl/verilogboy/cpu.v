@@ -30,7 +30,9 @@ module cpu(
     output wire [4:0] int_flags_out,
     input [7:0] key_in,
     output reg done,
-    output wire fault
+    output wire fault,
+
+    output wire [7:0] d_opcode
     );
 
     reg  [7:0]  opcode;
@@ -643,5 +645,7 @@ module cpu(
     end
 
     assign m_cycle = ex_state;
+
+    assign d_opcode = opcode;
 
 endmodule

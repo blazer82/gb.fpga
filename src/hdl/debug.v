@@ -8,14 +8,15 @@ module debug
         input wire[7:0] data,
         input wire rd,
         input wire wr,
-        input wire cs
+        input wire cs,
+        input wire[7:0] opcode
     );
 
     localparam s_IDLE      = 3'b00;
     localparam s_TX_BUFFER = 3'b01;
     localparam s_CLEANUP   = 3'b10;
 
-    localparam BUFFER_LENGTH = 22;
+    localparam BUFFER_LENGTH = 30;
     localparam TX_WAIT = 16'hF00;
 
     reg[1:0] state = s_IDLE;
@@ -49,7 +50,7 @@ module debug
 
     always @(posedge clk) begin
         b_addr <= addr;
-        
+
         if (~rd | ~wr)
             b_data <= data;
     end
@@ -73,6 +74,9 @@ module debug
                         "  DATA: ",
                         n2a(b_data >> 4),
                         n2a(b_data),
+                        "  OP: ",
+                        n2a(opcode >> 4),
+                        n2a(opcode),
                         "\n\r"
                     };
                     state <= s_TX_BUFFER;
@@ -80,7 +84,7 @@ module debug
 
                 if (~halt & handled_halt) begin
                     handled_halt <= halt;
-                    tx_buffer <= "CONTINUE            \n\r";
+                    tx_buffer <= "CONTINUE                    \n\r";
                     state <= s_TX_BUFFER;
                 end
             end
