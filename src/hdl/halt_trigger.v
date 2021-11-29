@@ -2,7 +2,7 @@ module halt_trigger
     (
         input wire clk,
         input wire rx,
-        output wire trigger
+        output reg trigger
     );
 
     wire rx_valid;
@@ -15,6 +15,14 @@ module halt_trigger
         .byte(rx_byte)
     );
 
-    assign trigger = rx_valid;
+    always @(rx_valid) begin
+        if (rx_valid) begin
+            case (rx_byte)
+                default:
+                    trigger <= 1'b1;
+            endcase
+        end else
+            trigger <= 1'b0;
+    end
 
 endmodule
