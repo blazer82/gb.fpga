@@ -154,6 +154,8 @@ module top
     halt_trigger halt_trigger (
         .clk(clk),
         .rx(uart_rx),
+        .halt(halt),
+        .gb_clk(clk_gb),
         .trigger(trigger)
     );
 
