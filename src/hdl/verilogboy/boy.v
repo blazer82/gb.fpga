@@ -41,7 +41,9 @@ module boy(
     // Debug interface
     output wire done,
     output wire fault,
-    output wire [7:0] d_opcode
+    output wire [7:0] d_opcode,
+    output wire [15:0] d_pc,
+    output wire [15:0] d_last_pc
     );
 
     // CPU
@@ -71,7 +73,9 @@ module boy(
         .key_in(key),
         .done(done),
         .fault(fault),
-        .d_opcode(d_opcode)
+        .d_opcode(d_opcode),
+        .d_pc(d_pc),
+        .d_last_pc(d_last_pc)
     );
 
     // High RAM

@@ -29,6 +29,7 @@ module uart_tx
 				done <= 1'b0;
 				clock_cnt <= 0;
 				bit_index <= 0;
+				busy <= 1'b0;
 
 				if (data_valid == 1'b1) begin
 					busy <= 1'b1;

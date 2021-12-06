@@ -1,37 +1,45 @@
 module debug
     (
         input wire clk,
-        input wire gb_clk,
         input wire halt,
-        input wire tx,
         input wire[15:0] addr,
         input wire[7:0] data,
         input wire rd,
         input wire wr,
         input wire cs,
-        input wire[7:0] opcode
+        input wire[7:0] opcode,
+        input wire[15:0] pc,
+        input wire[15:0] last_pc,
+        output wire tx
     );
 
     localparam s_IDLE      = 3'b00;
     localparam s_TX_BUFFER = 3'b01;
     localparam s_CLEANUP   = 3'b10;
 
-    localparam BUFFER_LENGTH = 30;
-    localparam TX_WAIT = 16'hF00;
+    localparam BUFFER_MAX_LENGTH = 48;
+    localparam TX_WAIT = 8'h0F;
 
     reg[1:0] state = s_IDLE;
 
     reg tx_valid = 1'b0;
     reg[7:0] tx_byte;
-    reg[BUFFER_LENGTH * 8 - 1:0] tx_buffer;
+    reg[BUFFER_MAX_LENGTH * 8 - 1:0] tx_buffer;
+    reg[15:0] buffer_length;
     reg[15:0] byte_index;
-    reg[15:0] wait_cnt;
+    reg[8:0] wait_cnt;
     wire tx_busy;
 
     reg[15:0] b_addr = 16'h00;
     reg[7:0] b_data = 8'h0;
 
     reg handled_halt = 1'b0;
+
+    wire[31:0] ascii_addr;
+    wire[15:0] ascii_data;
+    wire[15:0] ascii_opcode;
+    wire[31:0] ascii_pc;
+    wire[31:0] ascii_last_pc;
 
     uart_tx serial_tx (
         .clk(clk),
@@ -41,12 +49,11 @@ module debug
         .busy(tx_busy)
     );
 
-    function [7:0] n2a (input [3:0] nibble);
-        begin
-            n2a[7:4] = (nibble < 4'hA) ? 4'h3 : 4'h4;
-            n2a[3:0] = nibble - ((nibble < 4'hA) ? 4'h0 : 4'h9);
-        end
-    endfunction
+    ascii_encoder #(.NBR_OF_NIBBLES(4)) addr_encoder(.data(b_addr), .ascii(ascii_addr));
+    ascii_encoder #(.NBR_OF_NIBBLES(2)) data_encoder(.data(b_data), .ascii(ascii_data));
+    ascii_encoder #(.NBR_OF_NIBBLES(2)) opcode_encoder(.data(opcode), .ascii(ascii_opcode));
+    ascii_encoder #(.NBR_OF_NIBBLES(4)) pc_encoder(.data(pc), .ascii(ascii_pc));
+    ascii_encoder #(.NBR_OF_NIBBLES(4)) last_pc_encoder(.data(last_pc), .ascii(ascii_last_pc));
 
     always @(posedge clk) begin
         b_addr <= addr;
@@ -60,23 +67,24 @@ module debug
 		case (state)
 			s_IDLE: begin
                 tx_valid <= 1'b0;
+                buffer_length <= 0;
                 byte_index <= 0;
                 wait_cnt <= 0;
 
                 if (halt & ~handled_halt) begin
                     handled_halt <= halt;
+                    buffer_length <= BUFFER_MAX_LENGTH;
                     tx_buffer <= {
                         "ADDR: ",
-                        n2a(b_addr >> 12),
-                        n2a(b_addr >> 8),
-                        n2a(b_addr >> 4),
-                        n2a(b_addr),
+                        ascii_addr,
                         "  DATA: ",
-                        n2a(b_data >> 4),
-                        n2a(b_data),
+                        ascii_data,
+                        "  PC: ",
+                        ascii_last_pc,
+                        " -> ",
+                        ascii_pc,
                         "  OP: ",
-                        n2a(opcode >> 4),
-                        n2a(opcode),
+                        ascii_opcode,
                         "\n\r"
                     };
                     state <= s_TX_BUFFER;
@@ -84,7 +92,8 @@ module debug
 
                 if (~halt & handled_halt) begin
                     handled_halt <= halt;
-                    tx_buffer <= "CONTINUE                    \n\r";
+                    buffer_length <= 10;
+                    tx_buffer <= "CONTINUE\n\r";
                     state <= s_TX_BUFFER;
                 end
             end
@@ -93,17 +102,17 @@ module debug
                 if (wait_cnt < TX_WAIT)
                     wait_cnt <= wait_cnt + 1;
                 else begin
-                    if (~tx_busy && byte_index < BUFFER_LENGTH) begin
-                        tx_byte <= tx_buffer >> ((BUFFER_LENGTH - 1 - byte_index) * 8);
+                    if (~tx_busy && byte_index < buffer_length) begin
+                        tx_byte <= tx_buffer >> ((buffer_length - 1 - byte_index) * 32'd8);
                         tx_valid <= 1'b1;
                         byte_index <= byte_index + 1;
-                        wait_cnt <= TX_WAIT - 16'hF;  // a couple of clocks
+                        wait_cnt <= TX_WAIT - 8'h08;  // a couple of clocks
                     end
                     if (tx_busy) begin
                         tx_valid <= 1'b0;
                         wait_cnt <= 0;
                     end
-                    if (~tx_busy && byte_index == BUFFER_LENGTH) begin
+                    if (~tx_busy && byte_index == buffer_length) begin
                         tx_valid <= 1'b0;
                         state <= s_CLEANUP;
                     end

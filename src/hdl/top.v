@@ -72,6 +72,8 @@ module top
     wire rd;
     wire wr;
     wire[7:0] d_opcode;
+    wire[15:0] d_pc;
+    wire[15:0] d_last_pc;
     assign gb_rst = ~rst;
     assign gb_rd = ~rd;
     assign gb_wr = ~wr;
@@ -94,7 +96,9 @@ module top
         .wr(wr),
         .left(gb_left),
         .right(gb_right),
-        .d_opcode(d_opcode)
+        .d_opcode(d_opcode),
+        .d_pc(d_pc),
+        .d_last_pc(d_last_pc)
     );
 
     reg[11:0] rst_delay = 12'h000;
@@ -166,15 +170,16 @@ module top
     // Debug output
     debug debug (
         .clk(clk),
-        .gb_clk(gb_clk),
         .halt(halt),
-        .tx(uart_tx),
         .addr(gb_a),
         .data(gb_din),
         .rd(gb_rd),
         .wr(gb_wr),
         .cs(gb_cs),
-        .opcode(d_opcode)
+        .opcode(d_opcode),
+        .pc(d_pc),
+        .last_pc(d_last_pc),
+        .tx(uart_tx)
     );
 
 endmodule

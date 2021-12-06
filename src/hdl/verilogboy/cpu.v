@@ -32,7 +32,9 @@ module cpu(
     output reg done,
     output wire fault,
 
-    output wire [7:0] d_opcode
+    output wire [7:0] d_opcode,
+    output wire [15:0] d_pc,
+    output wire [15:0] d_last_pc
     );
 
     reg  [7:0]  opcode;
@@ -647,5 +649,7 @@ module cpu(
     assign m_cycle = ex_state;
 
     assign d_opcode = opcode;
+    assign d_pc = pc;
+    assign d_last_pc = last_pc;
 
 endmodule
