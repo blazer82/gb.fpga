@@ -6,6 +6,7 @@
 
 module ascii_encoder_tb;
     reg clk;
+    reg gb_clk;
     reg halt;
     reg[15:0] addr;
     reg[7:0] data;
@@ -18,9 +19,11 @@ module ascii_encoder_tb;
     wire tx;
 
     always #42 clk = !clk;
+    always #126 gb_clk = !gb_clk;
 
     debug debug (
         .clk(clk),
+        .gb_clk(gb_clk),
         .halt(halt),
         .addr(addr),
         .data(data),
@@ -35,6 +38,7 @@ module ascii_encoder_tb;
 
     initial begin
         clk <= 0;
+        gb_clk <= 0;
         halt <= 0;
         addr <= 16'h9999;
         data <= 8'h99;

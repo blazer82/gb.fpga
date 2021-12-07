@@ -1,6 +1,7 @@
 module debug
     (
         input wire clk,
+        input wire gb_clk,
         input wire halt,
         input wire[15:0] addr,
         input wire[7:0] data,
@@ -17,7 +18,7 @@ module debug
     localparam s_TX_BUFFER = 3'b01;
     localparam s_CLEANUP   = 3'b10;
 
-    localparam BUFFER_MAX_LENGTH = 48;
+    localparam BUFFER_MAX_LENGTH = 61;
     localparam TX_WAIT = 8'h0F;
 
     reg[1:0] state = s_IDLE;
@@ -30,6 +31,8 @@ module debug
     reg[8:0] wait_cnt;
     wire tx_busy;
 
+    reg[31:0] cycle = 32'h0;
+
     reg[15:0] b_addr = 16'h00;
     reg[7:0] b_data = 8'h0;
 
@@ -40,6 +43,7 @@ module debug
     wire[15:0] ascii_opcode;
     wire[31:0] ascii_pc;
     wire[31:0] ascii_last_pc;
+    wire[63:0] ascii_cycle;
 
     uart_tx serial_tx (
         .clk(clk),
@@ -54,12 +58,17 @@ module debug
     ascii_encoder #(.NBR_OF_NIBBLES(2)) opcode_encoder(.data(opcode), .ascii(ascii_opcode));
     ascii_encoder #(.NBR_OF_NIBBLES(4)) pc_encoder(.data(pc), .ascii(ascii_pc));
     ascii_encoder #(.NBR_OF_NIBBLES(4)) last_pc_encoder(.data(last_pc), .ascii(ascii_last_pc));
+    ascii_encoder #(.NBR_OF_NIBBLES(8)) cycle_encoder(.data(cycle), .ascii(ascii_cycle));
 
     always @(posedge clk) begin
         b_addr <= addr;
 
         if (~rd | ~wr)
             b_data <= data;
+    end
+
+    always @(posedge gb_clk) begin
+        cycle <= cycle + 1;
     end
 
     // Send out data
@@ -75,7 +84,9 @@ module debug
                     handled_halt <= halt;
                     buffer_length <= BUFFER_MAX_LENGTH;
                     tx_buffer <= {
-                        "ADDR: ",
+                        "C: ",
+                        ascii_cycle,
+                        "  ADDR: ",
                         ascii_addr,
                         "  DATA: ",
                         ascii_data,

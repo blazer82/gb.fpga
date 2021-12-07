@@ -170,6 +170,7 @@ module top
     // Debug output
     debug debug (
         .clk(clk),
+        .gb_clk(gb_clk),
         .halt(halt),
         .addr(gb_a),
         .data(gb_din),

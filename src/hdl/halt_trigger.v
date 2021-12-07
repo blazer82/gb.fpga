@@ -6,8 +6,8 @@ module halt_trigger
         input wire gb_clk,
         output reg trigger
     );
-    
-    reg auto_trigger = 1'b0;
+
+    reg[2:0] auto_trigger = 3'b100;
     reg en_auto_trigger = 1'b0;
 
     wire rx_valid;
@@ -24,11 +24,14 @@ module halt_trigger
         trigger <= 1'b0;
 
     always @(posedge gb_clk) begin
-        auto_trigger <= ~trigger & en_auto_trigger;
+        if (auto_trigger > 0 && en_auto_trigger)
+            auto_trigger <= auto_trigger - 1;
+        else
+            auto_trigger <= 3'b100;
     end
 
     always @(posedge clk) begin
-        if (auto_trigger) begin
+        if (en_auto_trigger && auto_trigger == 0) begin
             en_auto_trigger <= 1'b0;
             trigger <= 1'b1;
         end else if (rx_valid) begin
