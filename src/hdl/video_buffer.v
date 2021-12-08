@@ -34,10 +34,10 @@ module video_buffer
         .clkb(pclk),
         .doutb(pixel_out)
     );
-    
+
     reg [8:0] lut_addr;
     wire [63:0] lut_color;
-    
+
     blk_mem_gen_1 m2 (
         .addra(lut_addr),
         .clka(pclk),
@@ -88,13 +88,13 @@ module video_buffer
                         y_scale_cnt <= 0;
                         y_in <= y_in + 1;
                     end
-                    lut_addr <= ((144 - y_in) * 3 + y_scale_cnt) % 432;
+                    lut_addr <= ((143 - y_in) * 3 + y_scale_cnt) % 432;
                 end
             end
         end
     end
 
-    assign addr_out = (y_in < 145) ? (144 - y_in) * 160 + (160 - x_in) : 144 * 160 + x_in;
+    assign addr_out = (y_in < 145) ? (143 - y_in) * 160 + (159 - x_in) : 144 * 160 + x_in;
 
     // Assign final output color based on pixel_out
     //assign color = (pixel_out == 2'b00) ? 16'hffff : ((pixel_out == 2'b01) ? 16'hce79 : ((pixel_out == 2'b10) ? 16'h632c : 16'h0000));
