@@ -43,7 +43,10 @@ module boy(
     output wire fault,
     output wire [7:0] d_opcode,
     output wire [15:0] d_pc,
-    output wire [15:0] d_last_pc
+    output wire [15:0] d_last_pc,
+    output wire [7:0] d_reg_lcdc,
+    output wire [7:0] d_reg_stat,
+    output wire [4:0] d_ppu_state
     );
 
     // CPU
@@ -231,7 +234,9 @@ module boy(
         /* verilator lint_off PINCONNECTEMPTY */
         .scx(),
         .scy(),
-        .state()
+        .state(d_ppu_state),
+        .d_reg_lcdc(d_reg_lcdc),
+        .d_reg_stat(d_reg_stat)
         /* verilator lint_on PINCONNECTEMPTY */
     );
 

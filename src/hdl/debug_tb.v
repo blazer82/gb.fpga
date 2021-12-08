@@ -16,6 +16,9 @@ module ascii_encoder_tb;
     reg[7:0] opcode;
     reg[15:0] pc;
     reg[15:0] last_pc;
+    reg[7:0] lcdc;
+    reg[7:0] stat;
+    reg[4:0] ppu_state;
     wire tx;
 
     always #42 clk = !clk;
@@ -33,6 +36,9 @@ module ascii_encoder_tb;
         .opcode(opcode),
         .pc(pc),
         .last_pc(last_pc),
+        .lcdc(lcdc),
+        .stat(stat),
+        .ppu_state(ppu_state),
         .tx(tx)
     );
 
@@ -48,6 +54,9 @@ module ascii_encoder_tb;
         opcode <= 8'h99;
         pc <= 16'hAAAA;
         last_pc <= 16'h9999;
+        lcdc <= 8'h00;
+        stat <= 8'h41;
+        ppu_state <= 5'b11111;
 
         #2000 halt <= 1;
 

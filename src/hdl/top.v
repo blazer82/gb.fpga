@@ -74,6 +74,9 @@ module top
     wire[7:0] d_opcode;
     wire[15:0] d_pc;
     wire[15:0] d_last_pc;
+    wire[7:0] d_reg_lcdc;
+    wire[7:0] d_reg_stat;
+    wire[4:0] d_ppu_state;
     assign gb_rst = ~rst;
     assign gb_rd = ~rd;
     assign gb_wr = ~wr;
@@ -98,7 +101,10 @@ module top
         .right(gb_right),
         .d_opcode(d_opcode),
         .d_pc(d_pc),
-        .d_last_pc(d_last_pc)
+        .d_last_pc(d_last_pc),
+        .d_reg_lcdc(d_reg_lcdc),
+        .d_reg_stat(d_reg_stat),
+        .d_ppu_state(d_ppu_state)
     );
 
     reg[11:0] rst_delay = 12'h000;
@@ -180,6 +186,9 @@ module top
         .opcode(d_opcode),
         .pc(d_pc),
         .last_pc(d_last_pc),
+        .lcdc(d_reg_lcdc),
+        .stat(d_reg_stat),
+        .ppu_state(d_ppu_state),
         .tx(uart_tx)
     );
 
