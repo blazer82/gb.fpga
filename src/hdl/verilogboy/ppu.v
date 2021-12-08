@@ -85,7 +85,9 @@ module ppu(
     //Debug output
     output [7:0] scx,
     output [7:0] scy,
-    output [4:0] state
+    output [4:0] state,
+    output [7:0] d_reg_lcdc,
+    output [7:0] d_reg_stat
     );
 
     // Global Wires ?
@@ -851,5 +853,7 @@ module ppu(
     assign scx = reg_scx;
     assign scy = reg_scy;
     assign state = r_state;
+    assign d_reg_lcdc = reg_lcdc;
+    assign d_reg_stat = reg_stat;
 
 endmodule

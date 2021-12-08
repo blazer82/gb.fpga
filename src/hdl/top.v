@@ -32,7 +32,9 @@ module top
         input wire joy_right,
         input wire joy_up,
         input wire joy_down,
-        input wire joy_left
+        input wire joy_left,
+        output wire uart_tx,
+        input wire uart_rx
     );
 
     wire clk_gb;
@@ -69,6 +71,12 @@ module top
     wire[15:0] gb_right;
     wire rd;
     wire wr;
+    wire[7:0] d_opcode;
+    wire[15:0] d_pc;
+    wire[15:0] d_last_pc;
+    wire[7:0] d_reg_lcdc;
+    wire[7:0] d_reg_stat;
+    wire[4:0] d_ppu_state;
     assign gb_rst = ~rst;
     assign gb_rd = ~rd;
     assign gb_wr = ~wr;
@@ -90,7 +98,13 @@ module top
         .rd(rd),
         .wr(wr),
         .left(gb_left),
-        .right(gb_right)
+        .right(gb_right),
+        .d_opcode(d_opcode),
+        .d_pc(d_pc),
+        .d_last_pc(d_last_pc),
+        .d_reg_lcdc(d_reg_lcdc),
+        .d_reg_stat(d_reg_stat),
+        .d_ppu_state(d_ppu_state)
     );
 
     reg[11:0] rst_delay = 12'h000;
@@ -144,5 +158,38 @@ module top
 
     // Flash config (set QE bit)
     flash_config flash(.clk(clk), .cs(qspi_cs), .sdi(qspi_dq[1]), .sdo(qspi_dq[0]));
+
+    // Halt trigger
+    wire trigger;
+    halt_trigger halt_trigger (
+        .clk(clk),
+        .rx(uart_rx),
+        .halt(halt),
+        .gb_clk(clk_gb),
+        .trigger(trigger)
+    );
+
+    always @(posedge trigger) begin
+        halt <= ~halt;
+    end
+
+    // Debug output
+    debug debug (
+        .clk(clk),
+        .gb_clk(gb_clk),
+        .halt(halt),
+        .addr(gb_a),
+        .data(gb_din),
+        .rd(gb_rd),
+        .wr(gb_wr),
+        .cs(gb_cs),
+        .opcode(d_opcode),
+        .pc(d_pc),
+        .last_pc(d_last_pc),
+        .lcdc(d_reg_lcdc),
+        .stat(d_reg_stat),
+        .ppu_state(d_ppu_state),
+        .tx(uart_tx)
+    );
 
 endmodule

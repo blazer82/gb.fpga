@@ -40,7 +40,13 @@ module boy(
     output reg [15:0] right,
     // Debug interface
     output wire done,
-    output wire fault
+    output wire fault,
+    output wire [7:0] d_opcode,
+    output wire [15:0] d_pc,
+    output wire [15:0] d_last_pc,
+    output wire [7:0] d_reg_lcdc,
+    output wire [7:0] d_reg_stat,
+    output wire [4:0] d_ppu_state
     );
 
     // CPU
@@ -69,7 +75,11 @@ module boy(
         .int_flags_out(cpu_int_flags_out),
         .key_in(key),
         .done(done),
-        .fault(fault));
+        .fault(fault),
+        .d_opcode(d_opcode),
+        .d_pc(d_pc),
+        .d_last_pc(d_last_pc)
+    );
 
     // High RAM
     reg [7:0] high_ram [0:127];
@@ -224,7 +234,9 @@ module boy(
         /* verilator lint_off PINCONNECTEMPTY */
         .scx(),
         .scy(),
-        .state()
+        .state(d_ppu_state),
+        .d_reg_lcdc(d_reg_lcdc),
+        .d_reg_stat(d_reg_stat)
         /* verilator lint_on PINCONNECTEMPTY */
     );
 

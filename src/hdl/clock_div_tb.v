@@ -1,6 +1,6 @@
 `timescale 1ns/1ns
 
-`include "src/clock_div.v"
+`include "src/hdl/clock_div.v"
 
 module click_div_tb;
     reg clk;

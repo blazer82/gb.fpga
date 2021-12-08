@@ -7,8 +7,8 @@ set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets clk_IBUF]
 
 ## USB UART
 ## Note: Port names are from the perspoctive of the FPGA.
-#set_property -dict { PACKAGE_PIN F1   IOSTANDARD LVCMOS33 } [get_ports { uart_tx }]
-#set_property -dict { PACKAGE_PIN G1   IOSTANDARD LVCMOS33 } [get_ports { uart_rx }]
+set_property -dict { PACKAGE_PIN F1   IOSTANDARD LVCMOS33 } [get_ports { uart_tx }]
+set_property -dict { PACKAGE_PIN G1   IOSTANDARD LVCMOS33 } [get_ports { uart_rx }]
 
 ## Cartridge ports
 set_property -dict { PACKAGE_PIN P10   IOSTANDARD LVCMOS33 } [get_ports { gb_clk }]
