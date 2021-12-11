@@ -10,17 +10,17 @@ module clock_div
         output reg clk_out
     );
 
-    reg [SIZE - 1:0] counter = 0;
+    reg [SIZE - 1:0] counter = DIV_2N - 1;
 
     initial begin
         clk_out <= 0;
     end
 
     always @(posedge clk_in) begin
-        counter <= counter + 1;
+        counter <= counter == 0 ? counter : counter - 1;
 
-        if (counter == DIV_2N - 1) begin
-            counter <= 0;
+        if (counter == 0) begin
+            counter <= DIV_2N - 1;
             clk_out <= !clk_out;
         end
     end

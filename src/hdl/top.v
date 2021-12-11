@@ -117,8 +117,8 @@ module top
             rst_delay <= rst_delay + 1;
     end
 
-    display d1 (.clk(clk_buf60), .vsync_in(gb_vsync), .pclk(pclk), .hsync(hsync), .vsync(vsync), .de(de), .color());
-    defparam d1.CLK_DIV_2N = 2;
+    display d1 (.clk(clk_buf60), .pclk(pclk), .hsync(hsync), .vsync(vsync), .de(de), .color());
+    defparam d1.CLK_DIV_2N = 1;
 
     st7701_init st7701 (.clk(clk), .sclk(disp_sclk), .sout(disp_sdi), .cs(disp_cs), .rst(disp_rst));
 
