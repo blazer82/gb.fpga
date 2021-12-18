@@ -11,8 +11,7 @@ module click_div_tb;
 
     clock_div c1 (.clk_in(clk), .clk_out(clk_out1));
 
-    clock_div c2 (.clk_in(clk), .clk_out(clk_out2));
-    defparam c2.DIV_2N = 2;
+    clock_div #(.DIV_2N(2)) c2 (.clk_in(clk), .clk_out(clk_out2));
 
     initial begin
         clk <= 0;

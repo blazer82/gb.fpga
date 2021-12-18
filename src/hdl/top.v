@@ -52,8 +52,7 @@ module top
         .clk_out2(clk_buf60)
     );
 
-    clock_div c2 (.clk_in(clk_buf50), .clk_out(clk_gb));
-    defparam c2.DIV_2N = 6;
+    clock_div #(.DIV_2N(6)) c2 (.clk_in(clk_buf50), .clk_out(clk_gb));
 
     reg halt = 0;
     reg rst = 0;
@@ -117,8 +116,8 @@ module top
             rst_delay <= rst_delay + 1;
     end
 
-    display d1 (.clk(clk_buf60), .pclk(pclk), .hsync(hsync), .vsync(vsync), .de(de), .color());
-    defparam d1.CLK_DIV_2N = 1;
+    wire [15:0] unconnected_color;
+    display #(.CLK_DIV_2N(1)) d1 (.clk(clk_buf60), .pclk(pclk), .hsync(hsync), .vsync(vsync), .de(de), .color(unconnected_color));
 
     st7701_init st7701 (.clk(clk), .sclk(disp_sclk), .sout(disp_sdi), .cs(disp_cs), .rst(disp_rst));
 
@@ -151,10 +150,8 @@ module top
         .ena(gb_rd)
     );*/
 
-    pwm sl (.clk(gb_pclk), .digital_in(gb_left[14:6]), .pwm(audio_l));
-    defparam sl.WIDTH = 9;
-    pwm sr (.clk(gb_pclk), .digital_in(gb_right[14:6]), .pwm(audio_r));
-    defparam sr.WIDTH = 9;
+    pwm #(.WIDTH(9)) sl (.clk(gb_pclk), .digital_in(gb_left[14:6]), .pwm(audio_l));
+    pwm #(.WIDTH(9)) sr (.clk(gb_pclk), .digital_in(gb_right[14:6]), .pwm(audio_r));
 
     // Flash config (set QE bit)
     flash_config flash(.clk(clk), .cs(qspi_cs), .sdi(qspi_dq[1]), .sdo(qspi_dq[0]));

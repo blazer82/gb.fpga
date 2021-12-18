@@ -1,3 +1,5 @@
+`timescale 1ns / 1ns
+
 module uart_rx
     #(
         parameter CLKS_PER_BIT = 12000000 / 9600
@@ -6,7 +8,7 @@ module uart_rx
         input wire clk,
         input wire rx,
         output reg data_valid,
-        output reg [7:0] byte
+        output reg [7:0] byte_data
     );
 
     localparam s_IDLE         = 3'b000;
@@ -17,15 +19,15 @@ module uart_rx
 
     reg rx_data_r = 1'b1;
     reg rx_data = 1'b1;
-    reg[15:0] clock_cnt = 0;
+    reg[23:0] clock_cnt = 0;
     reg[2:0] bit_index = 0;
     reg[2:0] state = s_IDLE;
 
     initial begin
         data_valid <= 0;
-        byte <= 0;
+        byte_data <= 0;
     end
-    
+
     always @(posedge clk) begin
         rx_data_r <= rx;
         rx_data <= rx_data_r;
@@ -65,7 +67,7 @@ module uart_rx
                     state  <= s_RX_DATA_BITS;
                 end else begin
                     clock_cnt <= 0;
-                    byte[bit_index] <= rx_data;
+                    byte_data[bit_index] <= rx_data;
 
                     if (bit_index < 7)  begin
                         bit_index <= bit_index + 1;
