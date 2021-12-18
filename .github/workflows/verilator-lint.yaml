@@ -1,4 +1,4 @@
-name: analyze
+name: verilator-lint
 
 on:
   pull_request:

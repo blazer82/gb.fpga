@@ -1,4 +1,4 @@
-[![analyze-badge]](https://github.com/blazer82/gb.fpga/actions?workflow=analyze)
+[![verilator-lint-badge]](https://github.com/blazer82/gb.fpga/actions?workflow=verilator-lint)
 
 # FPGAMB0 - FPGA-based Handheld Console
 
@@ -16,4 +16,4 @@ Testbench files can be run and analyzed using _iverilog_ and _GTKWave_:
 iverilog -o main src/hdl/ascii_encoder_tb.v && vvp main -lxt2 && open dump.lx2
 ```
 
-[analyze-badge]: https://github.com/blazer82/gb.fpga/workflows/analyze/badge.svg
+[verilator-lint-badge]: https://github.com/blazer82/gb.fpga/workflows/verilator-lint/badge.svg
