@@ -1,0 +1,23 @@
+name: analyze
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Verilator
+        run: sudo apt-get update && sudo apt-get -y install verilator
+
+      - name: Run Linter
+        run: verilator --lint-only -Wall src/hdl/top.v -Isrc/hdl -Isrc/hdl/mocks -Isrc/hdl/verilogboy
