@@ -18,7 +18,7 @@ module video_buffer
     reg [14:0] addr_in = 0;
     reg clk_in;
     wire [14:0] addr_out;
-    
+
     wire [1:0] pixel_out1;
     wire [1:0] pixel_out2;
     wire [1:0] pixel_out3;
@@ -31,15 +31,17 @@ module video_buffer
     reg [7:0] y_in;
     reg [1:0] x_scale_cnt;
     reg [1:0] y_scale_cnt;
-    
+
+    wire [63:0] unmasked_color;
+
     wire en_wr_buffer1 = write_buffer_index == 2'b00;
     wire en_wr_buffer2 = write_buffer_index == 2'b01;
     wire en_wr_buffer3 = write_buffer_index == 2'b10;
-    
+
     wire en_rd_buffer1 = read_buffer_index == 2'b00;
     wire en_rd_buffer2 = read_buffer_index == 2'b01;
     wire en_rd_buffer3 = read_buffer_index == 2'b10;
-    
+
     video_buffer_1 buffer1 (
         .addra(addr_in),
         .clka(clk_in),
@@ -51,7 +53,7 @@ module video_buffer
         .doutb(pixel_out1),
         .enb(en_rd_buffer1)
     );
-    
+
     video_buffer_1 buffer2 (
         .addra(addr_in),
         .clka(clk_in),
@@ -63,7 +65,7 @@ module video_buffer
         .doutb(pixel_out2),
         .enb(en_rd_buffer2)
     );
-    
+
     video_buffer_1 buffer3 (
         .addra(addr_in),
         .clka(clk_in),
@@ -140,18 +142,19 @@ module video_buffer
                         y_scale_cnt <= 0;
                         y_in <= y_in + 1;
                     end
-                    lut_addr <= ((143 - y_in) * 3 + y_scale_cnt) % 432;
+                    lut_addr <= ((143 - y_in) * 3 + {6'd0, y_scale_cnt}) % 432;
                 end
             end
         end
     end
 
-    assign addr_out = (y_in < 145) ? (143 - y_in) * 160 + (159 - x_in) : 144 * 160 + x_in;
+    assign addr_out = (y_in < 145) ? (143 - {7'd0, y_in}) * 160 + (159 - {7'd0, x_in}) : 144 * 160 + {7'd0, x_in};
 
     // Assign final output color based on pixel_out
     //assign color = (pixel_out == 2'b00) ? 16'hffff : ((pixel_out == 2'b01) ? 16'hce79 : ((pixel_out == 2'b10) ? 16'h632c : 16'h0000));
-    assign color = (lut_color >> (pixel_out * 16)) & 16'hffff;
-    
+    assign unmasked_color = lut_color >> (pixel_out * 16);
+    assign color = unmasked_color[15:0];
+
     assign pixel_out = en_rd_buffer1 ? pixel_out1 : (en_rd_buffer2 ? pixel_out2 : pixel_out3);
 
 endmodule
