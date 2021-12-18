@@ -14,7 +14,7 @@ module pwm
     wire[WIDTH-1:0] cnt_r;  // reversed counter, see https://zipcpu.com/dsp/2017/09/04/pwm-reinvention.html
 
     initial begin
-        cnt <= 0;
+        cnt = 0;
     end
 
     always @(posedge clk) begin

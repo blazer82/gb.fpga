@@ -14,7 +14,7 @@ module st7701_init_tb;
     st7701_init s1 (.clk(clk), .sclk(sclk), .cs(cs), .sout(sout));
 
     initial begin
-        clk <= 0;
+        clk = 0;
         #600000000 $finish;
     end
 

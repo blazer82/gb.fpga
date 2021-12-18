@@ -9,7 +9,7 @@ module ascii_encoder_tb;
     ascii_encoder #(.NBR_OF_NIBBLES(2)) e1 (.data(data), .ascii(ascii));
 
     initial begin
-        data <= 8'hF0;
+        data = 8'hF0;
         #1000 $finish;
     end
 

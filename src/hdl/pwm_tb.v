@@ -17,9 +17,9 @@ module pwm_tb;
     end
 
     initial begin
-        clk <= 0;
-        clk2 <= 0;
-        cnt <= 0;
+        clk = 0;
+        clk2 = 0;
+        cnt = 0;
         #1000000 $finish;
     end
 

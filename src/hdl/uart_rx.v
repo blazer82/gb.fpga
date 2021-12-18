@@ -24,8 +24,8 @@ module uart_rx
     reg[2:0] state = s_IDLE;
 
     initial begin
-        data_valid <= 0;
-        byte_data <= 0;
+        data_valid = 0;
+        byte_data = 0;
     end
 
     always @(posedge clk) begin

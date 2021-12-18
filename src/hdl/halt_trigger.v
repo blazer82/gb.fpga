@@ -23,7 +23,7 @@ module halt_trigger
     );
 
     initial
-        trigger <= 1'b0;
+        trigger = 1'b0;
 
     always @(posedge gb_clk) begin
         if (auto_trigger > 0 && en_auto_trigger)

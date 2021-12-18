@@ -14,7 +14,7 @@ module click_div_tb;
     clock_div #(.DIV_2N(2)) c2 (.clk_in(clk), .clk_out(clk_out2));
 
     initial begin
-        clk <= 0;
+        clk = 0;
         #1000 $finish;
     end
 

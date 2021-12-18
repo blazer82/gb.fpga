@@ -27,10 +27,10 @@ module display
     reg de_row = 1;
 
     initial begin
-        hsync <= 1;
-        vsync <= 1;
-        de <= 0;
-        color <= 0;
+        hsync = 1;
+        vsync = 1;
+        de = 0;
+        color = 0;
     end
 
     wire pclk_out;
