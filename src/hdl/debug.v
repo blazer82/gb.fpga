@@ -1,3 +1,5 @@
+`timescale 1ns / 1ns
+
 module debug
     (
         input wire clk,
@@ -17,9 +19,9 @@ module debug
         output wire tx
     );
 
-    localparam s_IDLE      = 3'b00;
-    localparam s_TX_BUFFER = 3'b01;
-    localparam s_CLEANUP   = 3'b10;
+    localparam s_IDLE      = 2'b00;
+    localparam s_TX_BUFFER = 2'b01;
+    localparam s_CLEANUP   = 2'b10;
 
     localparam BUFFER_MAX_LENGTH = 90;
     localparam TX_WAIT = 8'h0F;
@@ -29,9 +31,10 @@ module debug
     reg tx_valid = 1'b0;
     reg [7:0] tx_byte;
     reg [BUFFER_MAX_LENGTH * 8 - 1:0] tx_buffer;
+    reg [BUFFER_MAX_LENGTH * 8 - 1:0] shifted_buffer;
     reg [15:0] buffer_length;
     reg [15:0] byte_index;
-    reg [8:0] wait_cnt;
+    reg [7:0] wait_cnt;
     wire tx_busy;
 
     reg [31:0] cycle = 32'h0;
@@ -57,7 +60,7 @@ module debug
         .clk(clk),
         .tx(tx),
         .data_valid(tx_valid),
-        .byte(tx_byte),
+        .byte_data(tx_byte),
         .busy(tx_busy)
     );
 
@@ -131,7 +134,8 @@ module debug
                     wait_cnt <= wait_cnt + 1;
                 else begin
                     if (~tx_busy && byte_index < buffer_length) begin
-                        tx_byte <= tx_buffer >> ((buffer_length - 1 - byte_index) * 32'd8);
+                        shifted_buffer = tx_buffer >> ((buffer_length - 1 - byte_index) * 8);
+                        tx_byte <= shifted_buffer[7:0];
                         tx_valid <= 1'b1;
                         byte_index <= byte_index + 1;
                         wait_cnt <= TX_WAIT - 8'h08;  // a couple of clocks

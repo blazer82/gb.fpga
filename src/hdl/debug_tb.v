@@ -43,22 +43,22 @@ module ascii_encoder_tb;
     );
 
     initial begin
-        clk <= 0;
-        gb_clk <= 0;
-        halt <= 0;
-        addr <= 16'h9999;
-        data <= 8'h99;
-        rd <= 1'b0;
-        wr <= 1'b0;
-        cs <= 1'b0;
-        opcode <= 8'h99;
-        pc <= 16'hAAAA;
-        last_pc <= 16'h9999;
-        lcdc <= 8'h00;
-        stat <= 8'h41;
-        ppu_state <= 5'b11111;
+        clk = 0;
+        gb_clk = 0;
+        halt = 0;
+        addr = 16'h9999;
+        data = 8'h99;
+        rd = 1'b0;
+        wr = 1'b0;
+        cs = 1'b0;
+        opcode = 8'h99;
+        pc = 16'hAAAA;
+        last_pc = 16'h9999;
+        lcdc = 8'h00;
+        stat = 8'h41;
+        ppu_state = 5'b11111;
 
-        #2000 halt <= 1;
+        #2000 halt = 1;
 
         #60000000 $finish;
     end

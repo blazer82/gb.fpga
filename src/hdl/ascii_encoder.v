@@ -1,3 +1,5 @@
+`timescale 1ns / 1ns
+
 module ascii_encoder
     #(
         parameter NBR_OF_NIBBLES = 1

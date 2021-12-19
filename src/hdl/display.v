@@ -27,15 +27,14 @@ module display
     reg de_row = 1;
 
     initial begin
-        hsync <= 1;
-        vsync <= 1;
-        de <= 0;
-        color <= 0;
+        hsync = 1;
+        vsync = 1;
+        de = 0;
+        color = 0;
     end
 
     wire pclk_out;
-    clock_div c1 (.clk_in(clk), .clk_out(pclk_out));
-    defparam c1.DIV_2N = CLK_DIV_2N;
+    clock_div #(.DIV_2N(CLK_DIV_2N)) c1 (.clk_in(clk), .clk_out(pclk_out));
 
     assign pclk = pclk_out;
 

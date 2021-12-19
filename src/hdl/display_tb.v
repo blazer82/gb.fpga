@@ -16,7 +16,7 @@ module display_tb;
     display d1 (.clk(clk), .pclk(pclk), .hsync(hsync), .vsync(vsync), .de(de), .color(color));
 
     initial begin
-        clk <= 0;
+        clk = 0;
         #60000000 $finish;
     end
 

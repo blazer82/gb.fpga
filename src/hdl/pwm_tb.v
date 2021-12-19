@@ -10,17 +10,16 @@ module pwm_tb;
     always #2 clk = !clk;
     always #1000 clk2 = !clk2;
 
-    pwm p1 (.clk(clk), .digital_in(cnt), .pwm());
-    defparam p1.WIDTH = 8;
+    pwm #(.WIDTH(8)) p1 (.clk(clk), .digital_in(cnt), .pwm());
 
     always @(posedge clk2) begin
         cnt <= cnt + 1;
     end
 
     initial begin
-        clk <= 0;
-        clk2 <= 0;
-        cnt <= 0;
+        clk = 0;
+        clk2 = 0;
+        cnt = 0;
         #1000000 $finish;
     end
 

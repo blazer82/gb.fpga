@@ -1,3 +1,5 @@
+`timescale 1ns / 1ns
+
 module halt_trigger
     (
         input wire clk,
@@ -17,11 +19,11 @@ module halt_trigger
         .clk(clk),
         .rx(rx),
         .data_valid(rx_valid),
-        .byte(rx_byte)
+        .byte_data(rx_byte)
     );
 
     initial
-        trigger <= 1'b0;
+        trigger = 1'b0;
 
     always @(posedge gb_clk) begin
         if (auto_trigger > 0 && en_auto_trigger)

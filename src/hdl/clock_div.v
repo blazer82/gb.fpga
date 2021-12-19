@@ -13,7 +13,7 @@ module clock_div
     reg [SIZE - 1:0] counter = DIV_2N - 1;
 
     initial begin
-        clk_out <= 0;
+        clk_out = 0;
     end
 
     always @(posedge clk_in) begin

@@ -1,3 +1,5 @@
+`timescale 1ns / 1ns
+
 module uart_tx
     #(
 		parameter CLKS_PER_BIT = 12000000 / 9600
@@ -5,7 +7,7 @@ module uart_tx
     (
 		input wire clk,
 		input wire data_valid,
-		input wire[7:0] byte,
+		input wire[7:0] byte_data,
 		output reg busy,
 		output reg tx,
 		output reg done
@@ -18,7 +20,7 @@ module uart_tx
     localparam s_CLEANUP      = 3'b100;
 
     reg[2:0] state = s_IDLE;
-    reg[15:0] clock_cnt = 0;
+    reg[23:0] clock_cnt = 0;
     reg[2:0] bit_index = 0;
     reg[7:0] tx_data = 0;
 
@@ -33,7 +35,7 @@ module uart_tx
 
 				if (data_valid == 1'b1) begin
 					busy <= 1'b1;
-					tx_data <= byte;
+					tx_data <= byte_data;
 					state <= s_TX_START_BIT;
 				end else
 					state <= s_IDLE;
