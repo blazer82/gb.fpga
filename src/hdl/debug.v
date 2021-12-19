@@ -56,14 +56,12 @@ module debug
     wire [15:0] ascii_stat;
     wire [15:0] ascii_ppu_state;
 
-    wire unconnected_done;
     uart_tx serial_tx (
         .clk(clk),
         .tx(tx),
         .data_valid(tx_valid),
         .byte_data(tx_byte),
-        .busy(tx_busy),
-        .done(unconnected_done)
+        .busy(tx_busy)
     );
 
     ascii_encoder #(.NBR_OF_NIBBLES(4)) addr_encoder(.data(b_addr), .ascii(ascii_addr));

@@ -116,8 +116,7 @@ module top
             rst_delay <= rst_delay + 1;
     end
 
-    wire [15:0] unconnected_color;
-    display #(.CLK_DIV_2N(1)) d1 (.clk(clk_buf60), .pclk(pclk), .hsync(hsync), .vsync(vsync), .de(de), .color(unconnected_color));
+    display #(.CLK_DIV_2N(1)) d1 (.clk(clk_buf60), .pclk(pclk), .hsync(hsync), .vsync(vsync), .de(de));
 
     st7701_init st7701 (.clk(clk), .sclk(disp_sclk), .sout(disp_sdi), .cs(disp_cs), .rst(disp_rst));
 
