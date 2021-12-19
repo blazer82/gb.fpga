@@ -1,5 +1,8 @@
 `timescale 1ns / 1ns
 
+// verilator lint_off UNUSED
+// verilator lint_off UNDRIVEN
+
 module STARTUPE2
     #(
         parameter PROG_USR = "FALSE",
@@ -13,3 +16,6 @@ module STARTUPE2
         input wire USRDONEO
     );
 endmodule
+
+// verilator lint_on UNUSED
+// verilator lint_on UNDRIVEN
