@@ -17,11 +17,11 @@ module top
         output wire audio_l,
         output wire audio_r,
         output wire qspi_cs,
-        output wire[1:0] qspi_dq,
+        inout wire[1:0] qspi_dq,
         output wire gb_clk,
         output wire gb_wr,
         output wire gb_rd,
-        output wire gb_cs,
+        output supply1 gb_cs,
         inout wire gb_rst,
         output wire[15:0] gb_a,
         inout wire[7:0] gb_d,
@@ -59,7 +59,6 @@ module top
     wire[7:0] keypad = {~joy_down, ~joy_up, ~joy_left, ~joy_right, ~joy_start, ~joy_select, ~joy_b, ~joy_a};
     wire gb_pclk;
     wire gb_de;
-    wire gb_hsync;
     wire gb_vsync;
     wire[1:0] gb_pixel;
     //wire[15:0] gb_addr;
@@ -87,7 +86,7 @@ module top
         .rst(rst),
         .key(keypad),
         .cpl(gb_pclk),
-        .hs(gb_hsync),
+        .hs(),
         .vs(gb_vsync),
         .pixel(gb_pixel),
         .valid(gb_de),
@@ -103,7 +102,9 @@ module top
         .d_last_pc(d_last_pc),
         .d_reg_lcdc(d_reg_lcdc),
         .d_reg_stat(d_reg_stat),
-        .d_ppu_state(d_ppu_state)
+        .d_ppu_state(d_ppu_state),
+        .done(),
+        .fault()
     );
 
     reg[11:0] rst_delay = 12'h000;
@@ -116,14 +117,13 @@ module top
             rst_delay <= rst_delay + 1;
     end
 
-    display #(.CLK_DIV_2N(1)) d1 (.clk(clk_buf60), .pclk(pclk), .hsync(hsync), .vsync(vsync), .de(de));
+    display #(.CLK_DIV_2N(1)) d1 (.clk(clk_buf60), .pclk(pclk), .hsync(hsync), .vsync(vsync), .de(de), .color());
 
     st7701_init st7701 (.clk(clk), .sclk(disp_sclk), .sout(disp_sdi), .cs(disp_cs), .rst(disp_rst));
 
     video_buffer buff1 (
         .gb_pclk(gb_pclk),
         .gb_de(gb_de),
-        .gb_hsync(gb_hsync),
         .gb_vsync(gb_vsync),
         .gb_pixel(gb_pixel),
         .rst(rst),

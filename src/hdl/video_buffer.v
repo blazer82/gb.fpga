@@ -4,7 +4,6 @@ module video_buffer
     (
         input wire gb_pclk,
         input wire gb_de,
-        input wire gb_hsync,
         input wire gb_vsync,
         input wire [1:0] gb_pixel,
         input wire rst,
@@ -31,8 +30,6 @@ module video_buffer
     reg [7:0] y_in;
     reg [1:0] x_scale_cnt;
     reg [1:0] y_scale_cnt;
-
-    wire [63:0] unmasked_color;
 
     wire en_wr_buffer1 = write_buffer_index == 2'b00;
     wire en_wr_buffer2 = write_buffer_index == 2'b01;
@@ -94,7 +91,7 @@ module video_buffer
     end
 
     // Count address in on each clock in, and reset on rst gb_vsync
-    always @(posedge clk_in, posedge rst, posedge gb_vsync) begin
+    always @(posedge clk_in, posedge gb_vsync) begin
         if (rst || gb_vsync) begin
             if (addr_in > 11600) begin
                 if (write_buffer_index < 2'b10)
@@ -111,7 +108,7 @@ module video_buffer
         end
     end
 
-    always @(posedge pclk, posedge rst, negedge hsync, negedge vsync) begin
+    always @(posedge pclk, negedge hsync, negedge vsync) begin
         if (rst || !vsync) begin
             x_in <= 0;
             y_in <= 0;
@@ -152,8 +149,11 @@ module video_buffer
 
     // Assign final output color based on pixel_out
     //assign color = (pixel_out == 2'b00) ? 16'hffff : ((pixel_out == 2'b01) ? 16'hce79 : ((pixel_out == 2'b10) ? 16'h632c : 16'h0000));
-    assign unmasked_color = lut_color >> (pixel_out * 16);
-    assign color = unmasked_color[15:0];
+
+    // TODO: Find a better option than turning the linter off
+    // Verilator lint_off WIDTH
+    assign color = lut_color >> (pixel_out * 16);
+    // Verilator lint_on WIDTH
 
     assign pixel_out = en_rd_buffer1 ? pixel_out1 : (en_rd_buffer2 ? pixel_out2 : pixel_out3);
 

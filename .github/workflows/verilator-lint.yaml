@@ -20,4 +20,4 @@ jobs:
         run: sudo apt-get update && sudo apt-get -y install verilator
 
       - name: Run Linter
-        run: verilator --lint-only -Wall -Wno-PINMISSING src/hdl/top.v -Isrc/hdl -Isrc/hdl/mocks -Isrc/hdl/verilogboy
+        run: verilator --lint-only -Wall -Wno-PINCONNECTEMPTY -Wno-LATCH src/hdl/top.v -Isrc/hdl -Isrc/hdl/mocks -Isrc/hdl/verilogboy

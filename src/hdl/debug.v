@@ -61,7 +61,8 @@ module debug
         .tx(tx),
         .data_valid(tx_valid),
         .byte_data(tx_byte),
-        .busy(tx_busy)
+        .busy(tx_busy),
+        .done()
     );
 
     ascii_encoder #(.NBR_OF_NIBBLES(4)) addr_encoder(.data(b_addr), .ascii(ascii_addr));
@@ -134,8 +135,10 @@ module debug
                     wait_cnt <= wait_cnt + 1;
                 else begin
                     if (~tx_busy && byte_index < buffer_length) begin
-                        shifted_buffer = tx_buffer >> ((buffer_length - 1 - byte_index) * 8);
-                        tx_byte <= shifted_buffer[7:0];
+                        // TODO: Find a better option than turning the linter off
+                        // Verilator lint_off WIDTH
+                        tx_byte <= tx_buffer >> ((buffer_length - 1 - byte_index) * 8);
+                        // Verilator lint_on WIDTH
                         tx_valid <= 1'b1;
                         byte_index <= byte_index + 1;
                         wait_cnt <= TX_WAIT - 8'h08;  // a couple of clocks
