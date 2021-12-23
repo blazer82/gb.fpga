@@ -15,7 +15,7 @@ module video_buffer
     );
 
     reg [14:0] addr_in = 0;
-    reg clk_in;
+    wire clk_in;
     wire [14:0] addr_out;
 
     wire [1:0] pixel_out1;
@@ -85,12 +85,10 @@ module video_buffer
     );
 
     // Only clock RAM in on valid pixels
-    always @(*) begin
-        clk_in = gb_de ? gb_pclk : clk_in;
-    end
+    assign clk_in = gb_de ? gb_pclk : 1'b0;
 
     // Count address in on each clock in, and reset on rst gb_vsync
-    always @(posedge clk_in, posedge gb_vsync) begin
+    always @(posedge clk_in, posedge rst, posedge gb_vsync) begin
         if (rst || gb_vsync) begin
             if (addr_in > 11600) begin
                 if (write_buffer_index < 2'b10)
@@ -107,7 +105,7 @@ module video_buffer
         end
     end
 
-    always @(posedge pclk, negedge hsync, negedge vsync) begin
+    always @(posedge pclk, posedge rst, negedge hsync, negedge vsync) begin
         if (rst || !vsync) begin
             x_in <= 0;
             y_in <= 0;
