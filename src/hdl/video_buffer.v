@@ -86,8 +86,7 @@ module video_buffer
 
     // Only clock RAM in on valid pixels
     always @(*) begin
-        if (gb_de)
-            clk_in <= gb_pclk;
+        clk_in = gb_de ? gb_pclk : clk_in;
     end
 
     // Count address in on each clock in, and reset on rst gb_vsync
